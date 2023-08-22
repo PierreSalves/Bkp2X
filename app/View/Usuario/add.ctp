@@ -1,32 +1,28 @@
-<?php
-
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Bkp002 $bkp002
- */
-?>
-<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Bkp002'), ['action' => 'index']) ?></li>
-    </ul>
-</nav> -->
-<div class="modal-dialog">
+<div class="modal-dialog" style="width:auto;margin-top:2em">
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-title">
                 <div class="row">
                     <div class="col-md-12">
-                        <legend><?= __('Adicionando Usuário') ?></legend>
+                        <legend><?php echo __('Adicionando Usuário') ?></legend>
                     </div>
                 </div>
             </div>
         </div>
-        <?= $this->Form->create($bkp002) ?>
+        <?php echo $this->Form->create(
+            'Usuario',
+            [
+                'url' => [
+                    'controller' => 'Usuario',
+                    'action' => 'add',
+                ],
+                'type' => 'post'
+            ]
+        ) ?>
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
-                    <?php echo $this->Form->control(
+                    <?php echo $this->Form->input(
                         'usernome',
                         [
                             'label' => 'Nome',
@@ -37,7 +33,7 @@
                     ); ?>
                 </div>
                 <div class="col-md-6">
-                    <?php echo $this->Form->control(
+                    <?php echo $this->Form->input(
                         'useremail',
                         [
                             'label' => 'Email',
@@ -51,7 +47,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <?php echo $this->Form->control(
+                    <?php echo $this->Form->input(
                         'userlogin',
                         [
                             'label' => 'Login',
@@ -62,7 +58,7 @@
                     ); ?>
                 </div>
                 <div class="col-md-6">
-                    <?php echo $this->Form->control(
+                    <?php echo $this->Form->input(
                         'userpassword',
                         [
                             'label' => 'Senha',
@@ -73,7 +69,7 @@
                     ); ?>
                 </div>
                 <div class="col-md-4">
-                    <?php echo $this->Form->control(
+                    <?php echo $this->Form->input(
                         'usersituacao',
                         [
                             'label' => 'Situação',
@@ -88,7 +84,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <?= $this->Form->button(
+            <?php echo $this->Form->button(
                 __('<i class="glyphicon glyphicon-floppy-disk"></i> Salvar'),
                 [
                     'type' => 'submit',
@@ -96,7 +92,7 @@
                 ]
             ) ?>
 
-            <?= $this->Html->link(
+            <?php echo $this->Html->link(
                 __('<i class="glyphicon glyphicon-remove"></i> Cancelar'),
                 [
                     'action' => 'index'
@@ -107,6 +103,6 @@
                 ]
             ) ?>
         </div>
-        <?= $this->Form->end() ?>
+        <?php echo $this->Form->end() ?>
     </div>
 </div>

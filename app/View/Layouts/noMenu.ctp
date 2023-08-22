@@ -123,45 +123,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</div>
 		</div>
 	</nav>
-	<nav class="sidebar text-center">
-		<ul class="nav nav-pills nav-stacked azul-secondary">
-			<li>
-				<?php echo $this->Html->link(
-					__('<i class="glyphicon glyphicon-user menu-icon"></i>'),
-					array(
-						'controller' => 'Usuario',
-						'action' => 'index'
-					),
-					array(
-						'title' => 'Adicionar Usuário',
-						'style' => 'padding:0',
-						'escape' => false
-					)
-
-				); ?>
-			</li>
-			<li>
-				<?php echo $this->Html->link(
-					__('<i class="glyphicon glyphicon-briefcase menu-icon"></i>'),
-					array(
-						'controller' => 'Cliente',
-						'action' => 'index'
-					),
-					array(
-						'title' => 'Adicionar Cliente',
-						'style' => 'padding:0',
-						'escape' => false
-					)
-
-				); ?>
-			</li>
-		</ul>
-	</nav>
-	<div class="main-content">
 		<div class="container">
 			<?php echo $this->Flash->render() ?>
 			<?php echo $this->fetch('content') ?>
 		</div>
-	</div>
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -30,6 +31,29 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
-	public $components = array('DebugKit.Toolbar');
+class AppController extends Controller
+{
+	public $components = array(
+		'DebugKit.Toolbar',
+		'Session',
+		'Auth' => array(
+			'userModel' => 'Usuario', // Especifique o nome do modelo de usuário personalizado
+			'loginAction' => array(
+				'controller' => 'Usuario',
+				'action' => 'login'
+			),
+			'Form' => array(
+				'fields' => array(
+					'id' => 'usercodigo'
+				)
+			),
+			'loginRedirect' => array('controller' => 'Backups', 'action' => 'index'),
+			'logoutRedirect' => array('controller' => 'Usuario', 'action' => 'login')
+		),
+	);
+
+	// public function beforeFilter()
+	// {
+	// 	$this->Auth->allow('index', 'view');
+	// }
 }

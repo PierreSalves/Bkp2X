@@ -4,6 +4,10 @@
     color: #ffffff;
 }
 
+.null-margin {
+	margin:0px;
+}
+
 li {
     color: #000;
 }
@@ -84,4 +88,8 @@ li {
 
 .laranja-secondary {
     background-color: #F7DC6F !important;
+}
+
+.table-responsive {
+	overflow-x: scroll;
 }

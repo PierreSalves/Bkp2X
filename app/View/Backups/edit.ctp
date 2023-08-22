@@ -21,7 +21,7 @@
     <fieldset>
         <legend><?= __('Edit Bkp000') ?></legend>
         <?php
-            echo $this->Form->control('btkclncodigo');
+            echo $this->Form->control('bktclncodigo');
             echo $this->Form->control('bktnomearquivo');
             echo $this->Form->control('bktsitcodigo');
             echo $this->Form->control('bktsituacao');
