@@ -4,21 +4,11 @@
             <div class="modal-title">
                 <div class="row">
                     <div class="col-md-12">
-                        <legend><?php echo __('Adicionando Cliente') ?></legend>
+                        <legend><?php echo __('Visualizando Cliente') ?></legend>
                     </div>
                 </div>
             </div>
         </div>
-        <?php echo $this->Form->create(
-            'Cliente',
-            [
-                'url' => [
-                    'controller' => 'Cliente',
-                    'action' => 'add',
-                ],
-                'type' => 'post'
-            ]
-        ) ?>
         <div class="modal-body">
 
         </div>
@@ -42,6 +32,5 @@
                 ]
             ) ?>
         </div>
-        <?php echo $this->Form->end() ?>
     </div>
 </div>

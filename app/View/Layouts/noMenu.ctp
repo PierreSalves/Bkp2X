@@ -82,7 +82,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             '/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min',
             '/plugins/bootstrap-editable/inputs-ext/address/address',
             '/plugins/sweetalert/dist/sweetalert.min',
-			'all.min'
+			'all.min',
+			'apiBackups'
         )
     );
     echo $this->fetch('script');

@@ -13,8 +13,9 @@ class UsuarioController extends AppController
 	{
 		$this->layout = 'login';
 		if ($this->request->is('post')) {
-			// if ($this->Auth->login()) {
-			if ($this->Auth->login($this->request->data)) {
+			// pr($this->request->data);exit;
+			if ($this->Auth->login()) {
+			// if ($this->Auth->login($this->request->data)) {
 
 				return $this->redirect($this->Auth->redirect());
 			} else {
@@ -49,6 +50,7 @@ class UsuarioController extends AppController
 
 		if ($this->request->is('post')) {
 
+			$this->request->data['Usuario']['usersituacao'] =  'A';
 			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
 
@@ -82,17 +84,6 @@ class UsuarioController extends AppController
 		$this->layout = 'noMenu';
 
 		$this->set('usuario', $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo))));
-
-		if ($this->request->is('post')) {
-
-			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
-			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
-
-			if ($this->Usuario->save($this->request->data['Usuario'])) {
-				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
-				$this->redirect(array('action' => 'index'));
-			};
-		}
 	}
 
 	function delete($usercodigo)

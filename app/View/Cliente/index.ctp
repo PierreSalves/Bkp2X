@@ -31,9 +31,9 @@
 			</div>
 		</div>
 		<div class="modal-body">
-			<div class="panel panel-default">
+			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
-					<h3 style="margin:0">Usuários</h3>
+					<h3 style="margin:0">Clientes</h3>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -41,16 +41,13 @@
 							<thead>
 								<tr>
 									<th scope="col" class="text-center"><?php echo __('Ações') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clncodigo') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clnbkpcaminho') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clndescricao') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clndescricaoreduzido') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clnsituacao') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clndatasituacao') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clnchavelogin') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clnchavepwd') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clndatacriacao') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clnusercodigo') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clncodigo', 'Código') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clndescricao', 'Descrição') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clndescricaoreduzido', 'Descrição Reduzida') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clnbkpcaminho', 'Diretório') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clnchavelogin', 'Chave Login Acesso') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clnchavepwd', 'Chave Senha Acesso') ?></th>
+									<th scope="col"><?php echo $this->Paginator->sort('clnsituacao', 'Situação') ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -58,15 +55,12 @@
 									<tr>
 										<td></td>
 										<td><?php echo $cliente['Cliente']['clncodigo']; ?></td>
-										<td><?php echo $cliente['Cliente']['clnbkpcaminho']; ?></td>
 										<td><?php echo $cliente['Cliente']['clndescricao']; ?></td>
 										<td><?php echo $cliente['Cliente']['clndescricaoreduzido']; ?></td>
-										<td><?php echo $cliente['Cliente']['clnsituacao']; ?></td>
-										<td><?php echo $cliente['Cliente']['clndatasituacao']; ?></td>
+										<td><?php echo $cliente['Cliente']['clnbkpcaminho']; ?></td>
 										<td><?php echo $cliente['Cliente']['clnchavelogin']; ?></td>
 										<td><?php echo $cliente['Cliente']['clnchavepwd']; ?></td>
-										<td><?php echo $cliente['Cliente']['clndatacriacao']; ?></td>
-										<td><?php echo $cliente['Cliente']['clnusercodigo']; ?></td>
+										<td><?php echo $cliente['Cliente']['clnsituacao']; ?></td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
@@ -82,16 +76,15 @@
 					echo $this->Paginator->counter(array(
 						'format' => __('Página {:page} de {:pages}')
 					));
-					?> </p>
-				<div class="paging">
-					<?php
-					echo $this->Paginator->first('<< Inicio  ');
-					echo $this->Paginator->prev('< ' . __(' Anterior '), array(), null, array('class' => 'prev disabled'));
-					echo $this->Paginator->numbers(array('separator' => ' | '));
-					echo $this->Paginator->next(__(' Próximo ') . ' >', array(), null, array('class' => 'next disabled'));
-					echo $this->Paginator->last('  Ultima >>');
 					?>
+				</p>
+				<div class="pagination pagination-sm" style="margin:0">
+					<li><?php echo $this->Paginator->prev('<' . __(' Anterior '), array(), null, array('class' => 'prev disabled')); ?></li>
+					<li><?php echo $this->Paginator->numbers(array('separator' => '')); ?></li>
+					<li><?php echo $this->Paginator->next(__(' Próximo ') . ' >', array(), null, array('class' => 'next disabled')); ?></li>
+
 				</div>
+
 			</div>
 		</div>
 	</div>

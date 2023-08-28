@@ -125,7 +125,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</nav>
 	<nav class="sidebar text-center">
 		<ul class="nav nav-pills nav-stacked azul-secondary">
-			<li>
+			<!-- <li>
 				<?php echo $this->Html->link(
 					__('<i class="glyphicon glyphicon-user menu-icon"></i>'),
 					array(
@@ -139,16 +139,31 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					)
 
 				); ?>
-			</li>
+			</li> -->
 			<li>
 				<?php echo $this->Html->link(
-					__('<i class="glyphicon glyphicon-briefcase menu-icon"></i>'),
+					__('<i class="glyphicon glyphicon-plus menu-icon"></i>'),
 					array(
 						'controller' => 'Cliente',
 						'action' => 'index'
 					),
 					array(
 						'title' => 'Adicionar Cliente',
+						'style' => 'padding:0',
+						'escape' => false
+					)
+
+				); ?>
+			</li>
+			<li>
+				<?php echo $this->Html->link(
+					__('<i class="glyphicon glyphicon-flag menu-icon"></i>'),
+					array(
+						'controller' => 'Situacao',
+						'action' => 'index'
+					),
+					array(
+						'title' => 'Cadastros de Situações',
 						'style' => 'padding:0',
 						'escape' => false
 					)

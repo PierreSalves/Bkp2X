@@ -17,9 +17,11 @@ class ClienteController extends AppController
 		$this->layout = 'noMenu';
 
 		if ($this->request->is('post')) {
-
-			$this->request->data['Cliente']['userdatasituacao'] = date('Y-m-d H:i:s');
-			$this->request->data['Cliente']['userdatacriacao'] = date('Y-m-d H:i:s');
+			pr($this->request->data);exit;
+			$this->request->data['Cliente']['clnsituacao'] = 'A';
+			$this->request->data['Cliente']['clndatasituacao'] = date('Y-m-d H:i:s');
+			$this->request->data['Cliente']['clnusercodigo'] = 1;
+			$this->request->data['Cliente']['clndatacriacao'] = date('Y-m-d H:i:s');
 
 			if ($this->Cliente->save($this->request->data['Cliente'])) {
 				$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
