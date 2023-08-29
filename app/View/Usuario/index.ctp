@@ -31,6 +31,7 @@
 			</div>
 		</div>
 		<div class="modal-body">
+		<?php echo $this->Flash->render('flash') ?>
 			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
 					<h3 style="margin:0">Usuários</h3>

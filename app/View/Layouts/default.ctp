@@ -31,62 +31,62 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 	echo $this->Html->meta('icon');
 
-    echo $this->Html->css(
-        array(
-            '/plugins/font-awesome/css/font-awesome.min',
-            '/plugins/bootstrap/css/bootstrap.min',
-            '/plugins/bootstrap-fileupload/bootstrap-fileupload',
-            '/plugins/bootstrap-datepicker/css/datepicker',
-            '/plugins/bootstrap-timepicker/compiled/timepicker',
-            '/plugins/bootstrap-colorpicker/css/colorpicker',
-            '/plugins/bootstrap-daterangepicker/daterangepicker-bs3',
-            '/plugins/bootstrap-datetimepicker/css/datetimepicker',
-            '/plugins/bootstrap-switch/static/stylesheets/bootstrap-switch-metro',
-            '/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable',
-            'all.min',
-            'custom',
-        )
-    );
+	echo $this->Html->css(
+		array(
+			'/plugins/font-awesome/css/font-awesome.min',
+			'/plugins/bootstrap/css/bootstrap.min',
+			'/plugins/bootstrap-fileupload/bootstrap-fileupload',
+			'/plugins/bootstrap-datepicker/css/datepicker',
+			'/plugins/bootstrap-timepicker/compiled/timepicker',
+			'/plugins/bootstrap-colorpicker/css/colorpicker',
+			'/plugins/bootstrap-daterangepicker/daterangepicker-bs3',
+			'/plugins/bootstrap-datetimepicker/css/datetimepicker',
+			'/plugins/bootstrap-switch/static/stylesheets/bootstrap-switch-metro',
+			'/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable',
+			'all.min',
+			'custom',
+		)
+	);
 
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    ?>
+	echo $this->fetch('meta');
+	echo $this->fetch('css');
+	?>
 
-    <?php
+	<?php
 
-    echo $this->Html->script(
-        array(
-            '/plugins/jquery-1.10.2.min',
-            '/plugins/jquery-migrate-1.2.1.min',
-            '/plugins/bootstrap/js/bootstrap.min',
-            '/plugins/bootstrap/js/bootstrap2-typeahead.min',
-            '/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min',
-            '/plugins/jquery.blockui.min',
-            '/plugins/jquery.cookie.min',
-            '/plugins/bootstrap-fileupload/bootstrap-fileupload',
-            '/plugins/bootstrap-datepicker/js/bootstrap-datepicker',
-            '/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker',
-            '/plugins/bootstrap-daterangepicker/moment.min',
-            '/plugins/bootstrap-daterangepicker/daterangepicker',
-            '/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker',
-            '/plugins/bootstrap-timepicker/js/bootstrap-timepicker',
-            '/plugins/jquery-inputmask/jquery.inputmask.bundle.min',
-            '/plugins/jquery.input-ip-address-control-1.0.min',
-            '/plugins/jquery-multi-select/js/jquery.multi-select',
-            '/plugins/jquery-multi-select/js/jquery.quicksearch',
-            '/plugins/jquery.pwstrength.bootstrap/src/pwstrength',
-            '/plugins/bootstrap-switch/static/js/bootstrap-switch.min',
-            '/plugins/jquery-tags-input/jquery.tagsinput.min',
-            '/plugins/moment.min',
-            '/plugins/jquery.mockjax',
-            '/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min',
-            '/plugins/bootstrap-editable/inputs-ext/address/address',
-            '/plugins/sweetalert/dist/sweetalert.min',
+	echo $this->Html->script(
+		array(
+			'/plugins/jquery-1.10.2.min',
+			'/plugins/jquery-migrate-1.2.1.min',
+			'/plugins/bootstrap/js/bootstrap.min',
+			'/plugins/bootstrap/js/bootstrap2-typeahead.min',
+			'/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min',
+			'/plugins/jquery.blockui.min',
+			'/plugins/jquery.cookie.min',
+			'/plugins/bootstrap-fileupload/bootstrap-fileupload',
+			'/plugins/bootstrap-datepicker/js/bootstrap-datepicker',
+			'/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker',
+			'/plugins/bootstrap-daterangepicker/moment.min',
+			'/plugins/bootstrap-daterangepicker/daterangepicker',
+			'/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker',
+			'/plugins/bootstrap-timepicker/js/bootstrap-timepicker',
+			'/plugins/jquery-inputmask/jquery.inputmask.bundle.min',
+			'/plugins/jquery.input-ip-address-control-1.0.min',
+			'/plugins/jquery-multi-select/js/jquery.multi-select',
+			'/plugins/jquery-multi-select/js/jquery.quicksearch',
+			'/plugins/jquery.pwstrength.bootstrap/src/pwstrength',
+			'/plugins/bootstrap-switch/static/js/bootstrap-switch.min',
+			'/plugins/jquery-tags-input/jquery.tagsinput.min',
+			'/plugins/moment.min',
+			'/plugins/jquery.mockjax',
+			'/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min',
+			'/plugins/bootstrap-editable/inputs-ext/address/address',
+			'/plugins/sweetalert/dist/sweetalert.min',
 			'all.min'
-        )
-    );
-    echo $this->fetch('script');
-    ?>
+		)
+	);
+	echo $this->fetch('script');
+	?>
 </head>
 
 <body>
@@ -173,10 +173,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		</ul>
 	</nav>
 	<div class="main-content">
-		<div class="container">
-			<?php echo $this->Flash->render() ?>
-			<?php echo $this->fetch('content') ?>
-		</div>
+		<?php echo $this->Flash->render('flash') ?>
+		<?php echo $this->fetch('content') ?>
 	</div>
 </body>
 </html>

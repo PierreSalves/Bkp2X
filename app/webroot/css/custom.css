@@ -29,8 +29,9 @@ li {
 }
 
 .main-content {
-	margin-left: 90px;
+	margin-left: 105px;
 	height: 100%;
+	width: -webkit-fill-available;
 	position: fixed;
 	top: 60px;
 }
@@ -107,4 +108,8 @@ textarea {
 
 .acoes {
 	min-width: 130px;
+}
+
+.card-body {
+	min-height: 150px;
 }

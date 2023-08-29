@@ -7,7 +7,8 @@ class ClienteController extends AppController
 		'Backups',
 		'Situacao',
 		'Historico',
-		'Cliente'
+		'Cliente',
+		'Usuario',
 	);
 
 	public $components = array('Paginator');
@@ -26,6 +27,7 @@ class ClienteController extends AppController
 
 		$this->set('listaClientes', $this->Paginator->paginate('Cliente'));
 	}
+
 	function add()
 	{
 		$this->layout = 'noMenu';

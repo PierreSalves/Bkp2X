@@ -31,6 +31,7 @@
 			</div>
 		</div>
 		<div class="modal-body">
+		<?php echo $this->Flash->render('flash') ?>
 			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
 					<h3 style="margin:0">Clientes</h3>
@@ -92,7 +93,7 @@
 												]
 											) ?>
 										</td>
-										<td><?php echo $cliente['Cliente']['clncodigo']; ?></td>
+										<td class="text-center"><?php echo $cliente['Cliente']['clncodigo']; ?></td>
 										<td><?php echo $cliente['Cliente']['clndescricao']; ?></td>
 										<td><?php echo $cliente['Cliente']['clndescricaoreduzido']; ?></td>
 										<td><?php echo $cliente['Cliente']['clnbkpcaminho']; ?></td>
