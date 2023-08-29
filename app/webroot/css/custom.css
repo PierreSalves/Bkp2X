@@ -92,6 +92,7 @@ li {
 
 .table-responsive {
 	overflow-x: scroll;
+	white-space: nowrap;
 }
 
 textarea {
@@ -102,4 +103,8 @@ textarea {
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;
+}
+
+.acoes {
+	min-width: 130px;
 }

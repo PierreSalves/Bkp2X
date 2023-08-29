@@ -14,8 +14,8 @@ class UsuarioController extends AppController
 		$this->layout = 'login';
 		if ($this->request->is('post')) {
 			// pr($this->request->data);exit;
-			if ($this->Auth->login()) {
-			// if ($this->Auth->login($this->request->data)) {
+			// if ($this->Auth->login()) {
+			if ($this->Auth->login($this->request->data)) {
 
 				return $this->redirect($this->Auth->redirect());
 			} else {

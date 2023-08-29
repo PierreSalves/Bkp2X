@@ -52,7 +52,7 @@
 							<tbody>
 								<?php foreach ($listaUsuarios as $usuario) : ?>
 									<tr>
-										<td class="text-center">
+										<td class="acoes text-center">
 											<?php echo $this->Html->link(
 												__('<i class="glyphicon glyphicon-search"></i>'),
 												[

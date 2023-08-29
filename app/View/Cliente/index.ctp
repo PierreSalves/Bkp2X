@@ -41,19 +41,57 @@
 							<thead>
 								<tr>
 									<th scope="col" class="text-center"><?php echo __('Ações') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clncodigo', 'Código') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('clncodigo', 'Código') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('clndescricao', 'Descrição') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('clndescricaoreduzido', 'Descrição Reduzida') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('clnbkpcaminho', 'Diretório') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('clnchavelogin', 'Chave Login Acesso') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('clnchavepwd', 'Chave Senha Acesso') ?></th>
-									<th scope="col"><?php echo $this->Paginator->sort('clnsituacao', 'Situação') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('clnsituacao', 'Situação') ?></th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ($listaClientes as $cliente) : ?>
 									<tr>
-										<td></td>
+										<td class="acoes text-center">
+											<?php echo $this->Html->link(
+												__('<i class="glyphicon glyphicon-search"></i>'),
+												[
+													'action' => 'view',
+													$cliente['Cliente']['clncodigo']
+												],
+												[
+													'class' => 'btn btn-xs btn-success',
+													'escape' => false,
+												]
+											) ?>
+											<?php echo $this->Html->link(
+												__('<i class="glyphicon glyphicon-edit"></i>'),
+												[
+													'action' => 'edit',
+													$cliente['Cliente']['clncodigo']
+												],
+												[
+													'class' => 'btn btn-xs btn-warning',
+													'escape' => false,
+												]
+											) ?>
+											<?php echo $this->Form->postLink(
+												__('<i class="glyphicon glyphicon-trash"></i>'),
+												[
+													'action' => 'delete',
+													$cliente['Cliente']['clncodigo']
+												],
+												[
+													'class' => 'btn btn-xs btn-danger',
+													'escape' => false,
+													'confirm' => __(
+														'Tem certeza que deseja Excluir o Cliente ' . $cliente['Cliente']['clndescricaoreduzido'] . '?',
+
+													)
+												]
+											) ?>
+										</td>
 										<td><?php echo $cliente['Cliente']['clncodigo']; ?></td>
 										<td><?php echo $cliente['Cliente']['clndescricao']; ?></td>
 										<td><?php echo $cliente['Cliente']['clndescricaoreduzido']; ?></td>

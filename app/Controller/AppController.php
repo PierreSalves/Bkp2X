@@ -53,7 +53,6 @@ class AppController extends Controller
 		// $this->Auth->loginRedirect = array('controller' => 'Professor', 'action' => 'index'); //redireciona após login
 
 		// $this->Auth->loginError = __('Usuário e/ou senha inválido(s).', true);
-		// $this->Auth->authError = __('Você precisa fazer login para acessar esta página.', true);
 
 		$this->Auth->loginAction = array('controller' => 'Usuario', 'action' => 'login');
 		$this->Auth->loginRedirect = array('controller' => 'Backups', 'action' => 'index');
@@ -67,6 +66,9 @@ class AppController extends Controller
 				)
 			)
 		);
+
+
+		$this->Auth->authError = __('Você precisa fazer login para acessar esta página.', true);
 
 		date_default_timezone_set('America/Sao_Paulo');
 	}

@@ -62,6 +62,7 @@
 					); ?>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-md-6">
 					<?php echo $this->Form->input(
@@ -106,11 +107,6 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-12">
-
-								</div>
-							</div>
 							<div class="list-group" id="listBackups">
 								<div class="list-group-item" id="item_0">
 									<div class="row">
