@@ -23,4 +23,19 @@ class Usuario extends AppModel {
      */
     public $displayField = 'usernome';
 
+	public $hasMany = array(
+		'Cliente' => array(
+			'className' => 'Cliente',
+			'foreignKey' => 'clnusercodigo',
+		),
+		'Backups' => array(
+			'className' => 'Backups',
+			'foreignKey' => 'bktusercodigo',
+		),
+		'Situacao' => array(
+			'className' => 'Situacao',
+			'foreignKey' => 'situsercodigo',
+		)
+	);
+
 }

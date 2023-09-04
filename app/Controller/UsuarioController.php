@@ -6,6 +6,7 @@ class UsuarioController extends AppController
 	var $uses = array('Auth', 'Usuario');
 
 	public $components = array(
+		'Session',
 		'Paginator'
 	);
 
@@ -17,6 +18,7 @@ class UsuarioController extends AppController
 			// if ($this->Auth->login()) {
 			if ($this->Auth->login($this->request->data)) {
 
+				$this->Session->write('Auth.User.usercodigo', 1);
 				return $this->redirect($this->Auth->redirect());
 			} else {
 				$this->Session->setFlash('Usuário ou Senha Incorretos', 'default', array('class' => 'alert alert-warning'));
@@ -26,6 +28,8 @@ class UsuarioController extends AppController
 
 	public function logout()
 	{
+		$this->Session->destroy();
+
 		return $this->redirect($this->Auth->logout());
 	}
 

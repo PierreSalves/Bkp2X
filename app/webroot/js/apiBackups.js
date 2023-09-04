@@ -1,10 +1,10 @@
 function addElements(url, id) {
 
 	if (!window.sessionStorage['i']) {
-		window.sessionStorage['i'] = 1;
+		window.sessionStorage['i'] = 0;
 	}
 
-	i = parseInt(window.sessionStorage['i']);
+	i = parseInt(window.sessionStorage['i']) + 1;
 
 	$.ajax({
 		type: "GET",

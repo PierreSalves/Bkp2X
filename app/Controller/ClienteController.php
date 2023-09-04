@@ -15,7 +15,6 @@ class ClienteController extends AppController
 
 	function index()
 	{
-
 		$this->layout = 'noMenu';
 
 		$this->Paginator->settings = array(
@@ -83,24 +82,42 @@ class ClienteController extends AppController
 
 			$editCliente = $this->request->data['Cliente'];
 			$editCliente['clncodigo'] = $clncodigo;
-			$editCliente['clnsituacao'] = 'A';
-			$editCliente['clndatasituacao'] = date('Y-m-d H:i:s');
-			$editCliente['clnusercodigo'] = 1;
-			$editCliente['clndatacriacao'] = date('Y-m-d H:i:s');
 
 			if ($this->Cliente->save($editCliente)) {
 
 				foreach ($this->request->data['Cliente']['Backups'] as $key => $backup) {
 
-					$novoBackup[$key] = $backup;
-					$novoBackup[$key]['bktclncodigo'] = $this->Cliente->id;
-					$novoBackup[$key]['bktsituacao'] = 'A';
-					$novoBackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
-					$novoBackup[$key]['bktusercodigo'] = 1;
-					$novoBackup[$key]['bktdatacriacao'] = date('Y-m-d H:i:s');
+					if (
+						isset($cliente['Backups'][$key]) &&
+						$cliente['Backups'][$key]['bktnomearquivo'] == $backup['bktnomearquivo']
+					) {
+						// Não faz nada
+					} else if (isset($cliente['Backups'][$key])) {
+
+						$editbackup[$key] = $cliente['Backups'][$key];
+						$editbackup[$key]['bktnomearquivo'] = $backup['bktnomearquivo'];
+					} else if (!isset($cliente['Backups'][$key])) {
+
+						$editbackup[$key] = $backup;
+						$editbackup[$key]['bktclncodigo'] = $this->Cliente->id;
+						$editbackup[$key]['bktsituacao'] = 'A';
+						$editbackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
+						$editbackup[$key]['bktusercodigo'] = 1;
+						$editbackup[$key]['bktdatacriacao'] = date('Y-m-d H:i:s');
+					}
 				}
 
-				if ($this->Backups->saveAll($novoBackup)) {
+				foreach ($cliente['Backups'] as $key => $backupAtivo) {
+					if (!isset($this->request->data['Cliente']['Backups'][$key])) {
+
+						// verifica os backups que foram excluidos
+						$editbackup[$key] = $backupAtivo;
+						$editbackup[$key]['bktsituacao'] = 'I';
+						$editbackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
+					}
+				}
+
+				if ($this->Backups->saveAll($editbackup)) {
 
 					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
 					$this->redirect(array('action' => 'index'));

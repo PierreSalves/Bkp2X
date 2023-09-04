@@ -4,7 +4,7 @@
 			<div class="modal-title">
 				<div class="row">
 					<div class="col-md-12">
-						<legend><?php echo __('Visualizando Cliente') ?></legend>
+						<legend><?php echo __('Editando Cliente') ?></legend>
 					</div>
 				</div>
 			</div>
@@ -116,7 +116,7 @@
 						<div class="panel-body">
 							<div class="list-group" id="listBackups">
 								<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
-									<div class="list-group-item">
+									<div class="list-group-item" id="item_<?php echo $key; ?>">
 										<div class="row">
 											<div class="col-md-11">
 												<?php echo $this->Form->input(
@@ -145,9 +145,7 @@
 											</div>
 										</div>
 									</div>
-									<script>
-										window.sessionStorage['i'] = <?php echo $key ?>;
-									</script>
+									<script>window.sessionStorage['i'] = parseInt(<?php echo $key; ?>);</script>
 								<?php endforeach; ?>
 							</div>
 						</div>

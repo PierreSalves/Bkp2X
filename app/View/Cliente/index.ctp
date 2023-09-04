@@ -88,7 +88,6 @@
 													'escape' => false,
 													'confirm' => __(
 														'Tem certeza que deseja Excluir o Cliente ' . $cliente['Cliente']['clndescricaoreduzido'] . '?',
-
 													)
 												]
 											) ?>

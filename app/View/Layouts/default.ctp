@@ -142,7 +142,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</li> -->
 			<li>
 				<?php echo $this->Html->link(
-					__('<i class="glyphicon glyphicon-plus menu-icon"></i>'),
+					__('<i class="glyphicon glyphicon-user menu-icon"></i>'),
 					array(
 						'controller' => 'Cliente',
 						'action' => 'index'
