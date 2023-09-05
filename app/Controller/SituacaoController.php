@@ -10,7 +10,10 @@ class SituacaoController extends AppController
 		'Usuario',
 	);
 
-	public $components = array('Paginator');
+	public $components = array(
+		'Session',
+		'Paginator'
+	);
 
 	function index()
 	{
@@ -19,6 +22,7 @@ class SituacaoController extends AppController
 		$this->Paginator->settings = array(
 			'limit' => 5,
 			'conditions' => array(
+				'situsercodigo' => $this->Session->read('Auth.User.usercodigo'),
 				'sitsituacao' => 'A'
 			)
 		);
@@ -35,7 +39,7 @@ class SituacaoController extends AppController
 			$novaSituacao = $this->request->data['Situacao'];
 			$novaSituacao['sitsituacao'] = 'A';
 			$novaSituacao['sitdatasituacao'] = date('Y-m-d H:i:s');
-			$novaSituacao['situsercodigo'] = 1;
+			$novaSituacao['situsercodigo'] = $this->Session->read('Auth.User.usercodigo');
 			$novaSituacao['sitdatacriacao'] = date('Y-m-d H:i:s');
 
 			if ($this->Situacao->save($novaSituacao)) {

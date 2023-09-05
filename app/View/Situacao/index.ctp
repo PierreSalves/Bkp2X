@@ -46,6 +46,9 @@
 									<th scope="col"><?php echo $this->Paginator->sort('sitreduzido', 'Descrição') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('sitdescricao', 'Descrição detalhada') ?></th>
 									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitsituacao', 'Situação') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorprimary', 'Cor Primária') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorsecondary', 'Cor Secundária') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorfonte', 'Cor da Fonte') ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -94,6 +97,9 @@
 										<td><?php echo $situacao['Situacao']['sitreduzido']; ?></td>
 										<td><?php echo $situacao['Situacao']['sitdescricao']; ?></td>
 										<td class="text-center"><?php echo $situacao['Situacao']['sitsituacao']; ?></td>
+										<td class="text-center"><?php echo $situacao['Situacao']['sitcorprimary']; ?></td>
+										<td class="text-center"><?php echo $situacao['Situacao']['sitcorsecondary']; ?></td>
+										<td class="text-center"><?php echo $situacao['Situacao']['sitcorfonte']; ?></td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>

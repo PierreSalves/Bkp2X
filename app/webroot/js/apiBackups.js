@@ -20,3 +20,10 @@ function removeElements(id) {
 
 	$(id).remove();
 }
+
+function escolherCor(color, id) {
+
+	$(`#${id}`).val(color);
+	$(`#${id}`).css('backgroundColor',color);
+	$(`#${id}`).css('color',color);
+}
