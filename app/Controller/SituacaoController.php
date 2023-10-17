@@ -56,15 +56,60 @@ class SituacaoController extends AppController
 	function view($sitcodigo)
 	{
 		$this->layout = 'noMenu';
+
+		$dadosSit = $this->Situacao->find(
+			'first',
+			array(
+				'conditions' =>	array(
+					'sitcodigo' => $sitcodigo
+				)
+			)
+		);
+		$this->set('dados', $dadosSit);
 	}
 
 	function edit($sitcodigo)
 	{
 		$this->layout = 'noMenu';
+
+		$dadosSit = $this->Situacao->find(
+			'first',
+			array(
+				'conditions' =>	array(
+					'sitcodigo' => $sitcodigo
+				)
+			)
+		);
+		$this->set('dados', $dadosSit);
+
+		if ($this->request->is('post')) {
+
+			$editSituacao = $this->request->data['Situacao'];
+
+			if ($this->Situacao->save($editSituacao)) {
+
+				$this->Session->setFlash('Situação Salva com Sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('Houve um Erro ao tentar Salvar a Situação!', 'default', array('class' => 'alert alert-danger'));
+				$this->redirect(array('action' => 'index'));
+			}
+		}
 	}
 
 	function delete($sitcodigo)
 	{
-		$this->layout = 'noMenu';
+		$this->layout = null;
+		$this->autoRender = false;
+
+		$inativarSituacao['sitcodigo'] = $sitcodigo;
+		$inativarSituacao['sitsituacao'] = 'I';
+		$inativarSituacao['sitdatasituacao'] = date('Y-m-d H:i:s');
+
+		if ($this->Situacao->save($inativarSituacao)) {
+			$this->Session->setFlash('Situação Excluida com Sucesso!', 'default', array('class' => 'alert alert-success'));
+		};
+
+		$this->redirect(array('controller' => 'Situacao', 'action' => 'index'));
 	}
 }

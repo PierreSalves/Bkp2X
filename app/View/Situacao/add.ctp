@@ -48,16 +48,16 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3">
-					<?php echo $this->Form->label('sitcorprimary', 'Cor Primária'); ?>
+					<?php echo $this->Form->label('sitcorprimaria', 'Cor Primária'); ?>
 					<div class="input-group">
 						<?php echo $this->Form->input(
-							'sitcorprimary',
+							'sitcorprimaria',
 							[
 								'type' => 'text',
 								'class' => 'form-control input-group-addon input-sm',
 								'div' => false,
 								'label' => false,
-								'id' => 'sitcorprimary',
+								'id' => 'sitcorprimaria',
 								'required',
 								'readonly'
 							]
@@ -69,16 +69,16 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
-									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorprimary\')" class="cinza-claro">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorprimary\')" class="cinza">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#85C1E9\',\'sitcorprimary\')" class="azul-secondary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#3498DB\',\'sitcorprimary\')" class="azul-primary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#363636\',\'sitcorprimary\')" class="cinza-escuro">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#000000\',\'sitcorprimary\')" class="preto">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#58D68D\',\'sitcorprimary\')" class="verde-secondary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#2ECC71\',\'sitcorprimary\')" class="verde-primary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#F7DC6F\',\'sitcorprimary\')" class="laranja-secondary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#F39C12\',\'sitcorprimary\')" class="laranja-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorprimaria\')" class="cinza-claro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorprimaria\')" class="cinza">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#85C1E9\',\'sitcorprimaria\')" class="azul-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#3498DB\',\'sitcorprimaria\')" class="azul-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#363636\',\'sitcorprimaria\')" class="cinza-escuro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#000000\',\'sitcorprimaria\')" class="preto">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#58D68D\',\'sitcorprimaria\')" class="verde-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#2ECC71\',\'sitcorprimaria\')" class="verde-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F7DC6F\',\'sitcorprimaria\')" class="laranja-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F39C12\',\'sitcorprimaria\')" class="laranja-primary">&nbsp;</a>',
 								),
 								array(
 									'class' => 'dropdown-menu dropdown-menu-right pull-right',

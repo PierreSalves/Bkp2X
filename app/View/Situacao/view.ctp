@@ -1,48 +1,136 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Bkp003 $bkp003
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Bkp003'), ['action' => 'edit', $bkp003->sitcodigo]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Bkp003'), ['action' => 'delete', $bkp003->sitcodigo], ['confirm' => __('Are you sure you want to delete # {0}?', $bkp003->sitcodigo)]) ?> </li>
-        <li><?= $this->Html->link(__('List Bkp003'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Bkp003'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="bkp003 view large-9 medium-8 columns content">
-    <h3><?= h($bkp003->sitcodigo) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Sitdescricao') ?></th>
-            <td><?= h($bkp003->sitdescricao) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Sitreduzido') ?></th>
-            <td><?= h($bkp003->sitreduzido) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Sitsituacao') ?></th>
-            <td><?= h($bkp003->sitsituacao) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Sitcodigo') ?></th>
-            <td><?= $this->Number->format($bkp003->sitcodigo) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Situsercodigo') ?></th>
-            <td><?= $this->Number->format($bkp003->situsercodigo) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Sitdatasituacao') ?></th>
-            <td><?= h($bkp003->sitdatasituacao) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Sitdatacriacao') ?></th>
-            <td><?= h($bkp003->sitdatacriacao) ?></td>
-        </tr>
-    </table>
+<div class="modal-dialog" style="width:auto;margin-top:2em">
+	<div class="modal-content">
+		<div class="modal-header">
+			<div class="modal-title">
+				<div class="row">
+					<div class="col-md-12">
+						<legend><?php echo __('Adicionando Situação') ?></legend>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-6">
+					<?php echo $this->Form->input(
+						'sitreduzido',
+						[
+							'label' => 'Descrição',
+							'type' => 'text',
+							'class' => 'form-control',
+							'value' => $dados['Situacao']['sitreduzido'],
+							'maxlength' => '100',
+							'required'
+						]
+					); ?>
+				</div>
+				<div class="col-md-6">
+					<?php echo $this->Form->input(
+						'sitdescricao',
+						[
+							'label' => 'Descrição Detalhada',
+							'type' => 'text',
+							'class' => 'form-control',
+							'value' => $dados['Situacao']['sitdescricao'],
+							'maxlength' => '300',
+							'required'
+						]
+					); ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<?php echo $this->Form->label('sitcorprimaria', 'Cor Primária'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'sitcorprimaria',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'sitcorprimaria',
+								'value' => $dados['Situacao']['sitcorprimaria'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<?php echo $this->Form->label('sitcorsecundaria', 'Cor Secundária'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'sitcorsecundaria',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'sitcorsecundaria',
+								'value' => $dados['Situacao']['sitcorsecundaria'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<?php echo $this->Form->label('sitcorfonte', 'Cor da Fonte'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'sitcorfonte',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'sitcorfonte',
+								'value' => $dados['Situacao']['sitcorfonte'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<?php echo $this->Html->link(
+				__('<i class="glyphicon glyphicon-remove"></i> Cancelar'),
+				[
+					'action' => 'index'
+				],
+				[
+					'class' => 'btn btn-danger',
+					'escape' => false
+				]
+			) ?>
+		</div>
+	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		escolherCor('<?php echo $dados['Situacao']['sitcorprimaria']; ?>', 'sitcorprimaria');
+		escolherCor('<?php echo $dados['Situacao']['sitcorsecundaria']; ?>', 'sitcorsecundaria');
+		escolherCor('<?php echo $dados['Situacao']['sitcorfonte']; ?>', 'sitcorfonte');
+	});
+</script>

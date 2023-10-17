@@ -38,35 +38,28 @@ class AppController extends Controller
 	var $components = array(
 		'DebugKit.Toolbar',
 		'Cookie',
-		'Auth',
 		'Session',
+		'Auth' => array(
+			'loginAction' => array('controller' => 'Usuario', 'action' => 'login'),
+			'loginRedirect' => array('controller' => 'Backups', 'action' => 'index'),
+			'logoutRedirect' => array('controller' => 'Usuario', 'action' => 'login'),
+			'authenticate' => array(
+				'Form' => array(
+					'userModel' => 'Usuario',
+					'fields' => array(
+						'username' => 'userlogin',
+						'password' => 'userpassword'
+					),
+					'passwordHasher' => 'blowfish'
+				)
+			)
+		)
 	);
 
 
 	public function beforeFilter()
 	{
 		parent::beforeFilter();
-
-
-		// $this->Auth->loginAction = array('controller' => 'Professor', 'action' => 'login' ); //o usuário é redirecionado para esta ação caso não esteja autenticado
-		// $this->Auth->logoutRedirect = array('controller' => 'Professor', 'action' => 'login'); //redireciona após o logout
-		// $this->Auth->loginRedirect = array('controller' => 'Professor', 'action' => 'index'); //redireciona após login
-
-		// $this->Auth->loginError = __('Usuário e/ou senha inválido(s).', true);
-
-		$this->Auth->loginAction = array('controller' => 'Usuario', 'action' => 'login');
-		$this->Auth->loginRedirect = array('controller' => 'Backups', 'action' => 'index');
-		$this->Auth->logoutRedirect = array('controller' => 'Usuario', 'action' => 'login');
-		$this->Auth->authenticate = array(
-			'Form' => array(
-				'userModel' => 'Usuario',
-				'fields' => array(
-					'username' => 'userlogin',
-					'password' => 'userpassword'
-				)
-			)
-		);
-
 
 		$this->Auth->authError = __('Você precisa fazer login para acessar esta página.', true);
 

@@ -9,7 +9,7 @@
 				<div class="panel-body card-body" style="background-color: #fff;">
 					<?php echo $cliente['Cliente']['clndescricao'] ?>
 					<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
-						<div class="list-group-item" style="background-color: <?php echo $sitBackup[$backup['bktsitcodigo']]['Situacao']['sitcorprimary'] ?>; color: <?php echo '#000' ?>">
+						<div class="list-group-item" style="background-color: <?php echo $sitBackup[$backup['bktsitcodigo']]['Situacao']['sitcorprimaria'] ?>; color: <?php echo '#000' ?>">
 							<?php echo $backup['bktnomearquivo']; ?>
 						</div>
 					<?php endforeach; ?>

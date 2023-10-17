@@ -46,8 +46,8 @@
 									<th scope="col"><?php echo $this->Paginator->sort('sitreduzido', 'Descrição') ?></th>
 									<th scope="col"><?php echo $this->Paginator->sort('sitdescricao', 'Descrição detalhada') ?></th>
 									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitsituacao', 'Situação') ?></th>
-									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorprimary', 'Cor Primária') ?></th>
-									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorsecondary', 'Cor Secundária') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorprimaria', 'Cor Primária') ?></th>
+									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorsecundaria', 'Cor Secundária') ?></th>
 									<th scope="col" class="text-center"><?php echo $this->Paginator->sort('sitcorfonte', 'Cor da Fonte') ?></th>
 								</tr>
 							</thead>
@@ -97,8 +97,8 @@
 										<td><?php echo $situacao['Situacao']['sitreduzido']; ?></td>
 										<td><?php echo $situacao['Situacao']['sitdescricao']; ?></td>
 										<td class="text-center"><?php echo $situacao['Situacao']['sitsituacao']; ?></td>
-										<td class="text-center"><?php echo $situacao['Situacao']['sitcorprimary']; ?></td>
-										<td class="text-center"><?php echo $situacao['Situacao']['sitcorsecondary']; ?></td>
+										<td class="text-center"><?php echo $situacao['Situacao']['sitcorprimaria']; ?></td>
+										<td class="text-center"><?php echo $situacao['Situacao']['sitcorsecundaria']; ?></td>
 										<td class="text-center"><?php echo $situacao['Situacao']['sitcorfonte']; ?></td>
 									</tr>
 								<?php endforeach; ?>
@@ -121,7 +121,6 @@
 					<li><?php echo $this->Paginator->prev('<' . __(' Anterior '), array(), null, array('class' => 'prev disabled')); ?></li>
 					<li><?php echo $this->Paginator->numbers(array('separator' => '')); ?></li>
 					<li><?php echo $this->Paginator->next(__(' Próximo ') . ' >', array(), null, array('class' => 'next disabled')); ?></li>
-
 				</div>
 
 			</div>

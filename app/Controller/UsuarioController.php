@@ -13,12 +13,22 @@ class UsuarioController extends AppController
 	function login()
 	{
 		$this->layout = 'login';
-		if ($this->request->is('post')) {
-			// pr($this->request->data);exit;
-			// if ($this->Auth->login()) {
-			if ($this->Auth->login($this->request->data)) {
 
-				$this->Session->write('Auth.User.usercodigo', 1);
+		if ($this->request->is('post')) {
+
+			$requestUser = $this->Usuario->find(
+				'first',
+				array(
+					'conditions' => array(
+						'userlogin' => $this->request->data['userlogin'],
+						'userpassword' => $this->request->data['userpassword']
+					)
+				)
+			);
+
+			if (!empty($requestUser)) {
+
+				$this->Auth->login($requestUser['Usuario']);
 				return $this->redirect($this->Auth->redirect());
 			} else {
 				$this->Session->setFlash('Usuário ou Senha Incorretos', 'default', array('class' => 'alert alert-warning'));
@@ -54,10 +64,11 @@ class UsuarioController extends AppController
 
 		if ($this->request->is('post')) {
 
+			$this->request->data['Usuario']['userpassword'] = Security::hash($this->request->data['Usuario']['userpassword'], 'blowfish');
 			$this->request->data['Usuario']['usersituacao'] =  'A';
 			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
-
+			// pr($this->request->data);exit;
 			if ($this->Usuario->save($this->request->data['Usuario'])) {
 				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
