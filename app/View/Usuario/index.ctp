@@ -96,7 +96,7 @@
 										<td><?php echo h($usuario['Usuario']['usernome']) ?></td>
 										<td><?php echo h($usuario['Usuario']['useremail']) ?></td>
 										<td><?php echo h($usuario['Usuario']['userlogin']) ?></td>
-										<td><?php echo h($usuario['Usuario']['userpassword']) ?></td>
+										<td><?php echo md5($usuario['Usuario']['userpassword']) ?></td>
 										<!-- <td class="text-center"><?php echo h($usuario['Usuario']['usersituacao']) ?></td> -->
 									</tr>
 								<?php endforeach; ?>

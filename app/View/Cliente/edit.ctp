@@ -94,6 +94,138 @@
 					); ?>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<?php echo $this->Form->label('clncorprimaria', 'Cor Primária'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'clncorprimaria',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'clncorprimaria',
+								'value' => $cliente['Cliente']['clncorprimaria'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<?php echo $this->Html->nestedList(
+								array(
+									'<a href="javascript:escolherCor(\'#e5e5e5\',\'clncorprimaria\')" class="cinza-claro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#CBCBCB\',\'clncorprimaria\')" class="cinza">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#363636\',\'clncorprimaria\')" class="cinza-escuro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#000000\',\'clncorprimaria\')" class="preto">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#85C1E9\',\'clncorprimaria\')" class="azul-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#3498DB\',\'clncorprimaria\')" class="azul-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#58D68D\',\'clncorprimaria\')" class="verde-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#2ECC71\',\'clncorprimaria\')" class="verde-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F7DC6F\',\'clncorprimaria\')" class="laranja-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F39C12\',\'clncorprimaria\')" class="laranja-primary">&nbsp;</a>',
+								),
+								array(
+									'class' => 'dropdown-menu dropdown-menu-right pull-right',
+									'style' => 'left:auto;padding:0'
+								)
+							);
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php echo $this->Form->label('clncorsecundaria', 'Cor Secundária'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'clncorsecundaria',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'clncorsecundaria',
+								'value' => $cliente['Cliente']['clncorsecundaria'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<?php echo $this->Html->nestedList(
+								array(
+									'<a href="javascript:escolherCor(\'#e5e5e5\',\'clncorsecundaria\')" class="cinza-claro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#CBCBCB\',\'clncorsecundaria\')" class="cinza">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#363636\',\'clncorsecundaria\')" class="cinza-escuro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#000000\',\'clncorsecundaria\')" class="preto">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#85C1E9\',\'clncorsecundaria\')" class="azul-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#3498DB\',\'clncorsecundaria\')" class="azul-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#58D68D\',\'clncorsecundaria\')" class="verde-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#2ECC71\',\'clncorsecundaria\')" class="verde-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F7DC6F\',\'clncorsecundaria\')" class="laranja-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F39C12\',\'clncorsecundaria\')" class="laranja-primary">&nbsp;</a>',
+								),
+								array(
+									'class' => 'dropdown-menu dropdown-menu-right pull-right',
+									'style' => 'left:auto;padding:0'
+								)
+							);
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php echo $this->Form->label('clncorfonte', 'Cor da Fonte'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'clncorfonte',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'clncorfonte',
+								'value' => $cliente['Cliente']['clncorfonte'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<?php echo $this->Html->nestedList(
+								array(
+									'<a href="javascript:escolherCor(\'#e5e5e5\',\'clncorfonte\')" class="cinza-claro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#CBCBCB\',\'clncorfonte\')" class="cinza">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#363636\',\'clncorfonte\')" class="cinza-escuro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#000000\',\'clncorfonte\')" class="preto">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#85C1E9\',\'clncorfonte\')" class="azul-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#3498DB\',\'clncorfonte\')" class="azul-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#58D68D\',\'clncorfonte\')" class="verde-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#2ECC71\',\'clncorfonte\')" class="verde-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F7DC6F\',\'clncorfonte\')" class="laranja-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F39C12\',\'clncorfonte\')" class="laranja-primary">&nbsp;</a>',
+								),
+								array(
+									'class' => 'dropdown-menu dropdown-menu-right pull-right',
+									'style' => 'left:auto;padding:0'
+								)
+							);
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="modal-body">
 			<div class="row">
@@ -108,7 +240,7 @@
 										'type' => 'button',
 										'class' => 'btn btn-primary btn-sm',
 										'title' => 'Adicionar Backup',
-										'onclick' => 'addElements(\'' . $this->Html->url(array('controller' => 'Backups', 'action' => 'add')) . '\',\'#listBackups\')'
+										'onclick' => 'addElements(\'' . $this->Html->url(array('controller' => 'Backups', 'action' => 'addElement')) . '\',\'#listBackups\')'
 									)
 								); ?>
 							</div>
@@ -176,3 +308,10 @@
 		<?php echo $this->Form->end(); ?>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		escolherCor('<?php echo $cliente['Cliente']['clncorprimaria']; ?>', 'clncorprimaria');
+		escolherCor('<?php echo $cliente['Cliente']['clncorsecundaria']; ?>', 'clncorsecundaria');
+		escolherCor('<?php echo $cliente['Cliente']['clncorfonte']; ?>', 'clncorfonte');
+	});
+</script>

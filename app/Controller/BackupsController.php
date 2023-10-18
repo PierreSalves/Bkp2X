@@ -1,4 +1,6 @@
 <?php
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 
 class BackupsController extends AppController
 {
@@ -6,7 +8,7 @@ class BackupsController extends AppController
 	var $uses = array(
 		'Backups',
 		'Cliente',
-		'Situacao'
+		'Situacao',
 	);
 
 	public $components = array(
@@ -44,10 +46,42 @@ class BackupsController extends AppController
 		$this->set('sitBackup', $sitBackup);
 	}
 
-	function add($i)
+	function addElement($i)
 	{
 		$this->layout = null;
 
 		$this->set('i', $i);
+	}
+
+	function attBackups()
+	{
+
+		$clientes = $this->Cliente->find(
+			'all',
+			array(
+				'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
+				'clnsituacao' => 'A'
+			)
+		);
+
+		foreach ($clientes as $key => $cliente) {
+
+			$dir = new Folder($cliente['Cliente']['clnbkpcaminho']);
+
+			$arquivos = $cliente['Backups'];
+
+			foreach ($arquivos as $key => $backup) {
+
+				$arquivo = $dir->find($backup['bktnomearquivo'] . '.*\.zip');
+
+				$file = new File($cliente['Cliente']['clnbkpcaminho'] . $backup['bktnomearquivo']);
+				pr($file->info());exit;
+
+				// if (condition) {
+				// 	# code...
+				// }
+			}
+			exit;
+		}
 	}
 }

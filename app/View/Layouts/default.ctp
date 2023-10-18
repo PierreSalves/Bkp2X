@@ -98,7 +98,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					<div class="dropdown">
 						<button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							<span class="glyphicon glyphicon-user"></span>
-							Usuário
+							<?php echo $this->Session->read('Auth.User.usernome');?>
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-right pull-right" aria-labelledby="dropdownMenu1">

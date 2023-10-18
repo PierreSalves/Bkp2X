@@ -85,6 +85,81 @@
 					); ?>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<?php echo $this->Form->label('clncorprimaria', 'Cor Primária'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'clncorprimaria',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'clncorprimaria',
+								'value' => $cliente['Cliente']['clncorprimaria'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php echo $this->Form->label('clncorsecundaria', 'Cor Secundária'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'clncorsecundaria',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'clncorsecundaria',
+								'value' => $cliente['Cliente']['clncorsecundaria'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php echo $this->Form->label('clncorfonte', 'Cor da Fonte'); ?>
+					<div class="input-group">
+						<?php echo $this->Form->input(
+							'clncorfonte',
+							[
+								'type' => 'text',
+								'class' => 'form-control input-group-addon input-sm',
+								'div' => false,
+								'label' => false,
+								'id' => 'clncorfonte',
+								'value' => $cliente['Cliente']['clncorfonte'],
+								'required',
+								'readonly'
+							]
+						); ?>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="modal-body">
 			<div class="row">
@@ -98,23 +173,23 @@
 						<div class="panel-body">
 							<div class="list-group" id="listBackups">
 								<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
-								<div class="list-group-item">
-									<div class="row">
-										<div class="col-md-11">
-											<?php echo $this->Form->input(
-												"Cliente.Backups.$key.bktnomearquivo",
-												array(
-													'label' => 'Nome do Arquivo',
-													'type' => 'text',
-													'class' => 'form-control input-sm',
-													'maxlength' => '100',
-													'value' => $backup['bktnomearquivo'],
-													'disabled'
-												)
-											); ?>
+									<div class="list-group-item">
+										<div class="row">
+											<div class="col-md-11">
+												<?php echo $this->Form->input(
+													"Cliente.Backups.$key.bktnomearquivo",
+													array(
+														'label' => 'Nome do Arquivo',
+														'type' => 'text',
+														'class' => 'form-control input-sm',
+														'maxlength' => '100',
+														'value' => $backup['bktnomearquivo'],
+														'disabled'
+													)
+												); ?>
+											</div>
 										</div>
 									</div>
-								</div>
 								<?php endforeach; ?>
 							</div>
 						</div>
@@ -136,3 +211,10 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		escolherCor('<?php echo $cliente['Cliente']['clncorprimaria']; ?>', 'clncorprimaria');
+		escolherCor('<?php echo $cliente['Cliente']['clncorsecundaria']; ?>', 'clncorsecundaria');
+		escolherCor('<?php echo $cliente['Cliente']['clncorfonte']; ?>', 'clncorfonte');
+	});
+</script>

@@ -64,11 +64,11 @@ class UsuarioController extends AppController
 
 		if ($this->request->is('post')) {
 
-			$this->request->data['Usuario']['userpassword'] = Security::hash($this->request->data['Usuario']['userpassword'], 'blowfish');
+			// $this->request->data['Usuario']['userpassword'] = Security::hash($this->request->data['Usuario']['userpassword'], 'blowfish');
 			$this->request->data['Usuario']['usersituacao'] =  'A';
 			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
-			// pr($this->request->data);exit;
+
 			if ($this->Usuario->save($this->request->data['Usuario'])) {
 				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
@@ -84,6 +84,7 @@ class UsuarioController extends AppController
 
 		if ($this->request->is('post')) {
 
+			// $this->request->data['Usuario']['userpassword'] = Security::hash($this->request->data['Usuario']['userpassword'], 'blowfish');
 			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
 

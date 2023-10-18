@@ -1,3 +1,7 @@
+body {
+	background-color: #f0f0f0
+}
+
 .navbar,
 .navbar-fixed-top>h1 {
 	background-color: #3498DB !important;
