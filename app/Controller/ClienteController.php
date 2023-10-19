@@ -9,6 +9,7 @@ class ClienteController extends AppController
 		'Historico',
 		'Cliente',
 		'Usuario',
+		'RecorrenciaBackup'
 	);
 
 	public $components = array('Paginator');
@@ -49,9 +50,20 @@ class ClienteController extends AppController
 					$novoBackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
 					$novoBackup[$key]['bktusercodigo'] = 1;
 					$novoBackup[$key]['bktdatacriacao'] = date('Y-m-d H:i:s');
+
+					$this->Backups->save($novoBackup[$key]);
+
+					for ($i = 1; $i <= $backup['bktrecorrencia']; $i++) {
+
+						$insertRecorrencia[$i]['recbktcodigo'] = $this->Backups->id;
+						$insertRecorrencia[$i]['recnumero']	= $i;
+						$insertRecorrencia[$i]['recsituacao'] = 'A';
+						$insertRecorrencia[$i]['recdatasituacao'] = date('Y-m-d H:i:s');
+						$insertRecorrencia[$i]['recdatacriacao'] = date('Y-m-d H:i:s');
+					}
 				}
 
-				if ($this->Backups->saveAll($novoBackup)) {
+				if ($this->RecorrenciaBackup->saveAll($insertRecorrencia)) {
 
 					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
 					$this->redirect(array('action' => 'index'));

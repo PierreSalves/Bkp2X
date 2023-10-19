@@ -68,20 +68,30 @@ class BackupsController extends AppController
 
 			$dir = new Folder($cliente['Cliente']['clnbkpcaminho']);
 
-			$arquivos = $cliente['Backups'];
+			$arquivo = $dir->read(
+				// $cliente['Cliente']['clnbkpcaminho'] . $backup['bktnomearquivo'] . '.*\.zip',
+				$cliente['Cliente']['clnbkpcaminho'],
+				[
+					'username' => $cliente['Cliente']['clnchavelogin'],
+					'password' => $cliente['Cliente']['clnchavepwd']
+				]
+			);
 
-			foreach ($arquivos as $key => $backup) {
+			pr('FOLDER()------------------------------------------------------------' . $cliente['Cliente']['clndescricao'] . '--------------------------------------------------------');
+			pr($arquivo[1]);
 
-				$arquivo = $dir->find($backup['bktnomearquivo'] . '.*\.zip');
+			// $arquivos = $cliente['Backups'];
+			// foreach ($arquivos as $key => $backup) {
 
-				$file = new File($cliente['Cliente']['clnbkpcaminho'] . $backup['bktnomearquivo']);
-				pr($file->info());exit;
+			// pr('FILE()--------------------------------------------------------------------------------------------------------------------');
+			// $file = new File($cliente['Cliente']['clnbkpcaminho'] . $backup['bktnomearquivo']);
+			// pr($file->info());
 
-				// if (condition) {
-				// 	# code...
-				// }
-			}
-			exit;
+			// if (condition) {
+			// 	# code...
+			// }
+			// }
 		}
+		exit;
 	}
 }

@@ -250,7 +250,7 @@
 								<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
 									<div class="list-group-item" id="item_<?php echo $key; ?>">
 										<div class="row">
-											<div class="col-md-11">
+											<div class="col-md-9">
 												<?php echo $this->Form->input(
 													"Cliente.Backups.$key.bktnomearquivo",
 													array(
@@ -260,6 +260,20 @@
 														'maxlength' => '100',
 														'value' => $backup['bktnomearquivo'],
 														'required'
+													)
+												); ?>
+											</div>
+											<div class="col-md-2" title="Quantas vezes o backup é realizado no dia">
+												<?php echo $this->Form->input(
+													"Cliente.Backups.$key.bktrecorrencia",
+													array(
+														'label' => 'Recorrência',
+														'type' => 'number',
+														'class' => 'form-control input-sm',
+														'min' => 1,
+														'step' => 1,
+														'value' => $backup['bktrecorrencia'],
+														'disabled' => true
 													)
 												); ?>
 											</div>
@@ -277,7 +291,9 @@
 											</div>
 										</div>
 									</div>
-									<script>window.sessionStorage['i'] = parseInt(<?php echo $key; ?>);</script>
+									<script>
+										window.sessionStorage['i'] = parseInt(<?php echo $key; ?>);
+									</script>
 								<?php endforeach; ?>
 							</div>
 						</div>

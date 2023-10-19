@@ -175,7 +175,7 @@
 								<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
 									<div class="list-group-item">
 										<div class="row">
-											<div class="col-md-11">
+											<div class="col-md-9">
 												<?php echo $this->Form->input(
 													"Cliente.Backups.$key.bktnomearquivo",
 													array(
@@ -185,6 +185,20 @@
 														'maxlength' => '100',
 														'value' => $backup['bktnomearquivo'],
 														'disabled'
+													)
+												); ?>
+											</div>
+											<div class="col-md-2" title="Quantas vezes o backup é realizado no dia">
+												<?php echo $this->Form->input(
+													"Cliente.Backups.$key.bktrecorrencia",
+													array(
+														'label' => 'Recorrência',
+														'type' => 'number',
+														'class' => 'form-control input-sm',
+														'min' => 1,
+														'step' => 1,
+														'value' => $backup['bktrecorrencia'],
+														'disabled' => true
 													)
 												); ?>
 											</div>

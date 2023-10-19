@@ -239,7 +239,7 @@
 							<div class="list-group" id="listBackups">
 								<div class="list-group-item" id="item_0">
 									<div class="row">
-										<div class="col-md-11">
+										<div class="col-md-9">
 											<?php echo $this->Form->input(
 												"Cliente.Backups.0.bktnomearquivo",
 												array(
@@ -247,6 +247,20 @@
 													'type' => 'text',
 													'class' => 'form-control input-sm',
 													'maxlength' => '100',
+													'required' => true
+												)
+											); ?>
+										</div>
+										<div class="col-md-2" title="Quantas vezes o backup é realizado no dia">
+											<?php echo $this->Form->input(
+												"Cliente.Backups.0.bktrecorrencia",
+												array(
+													'label' => 'Recorrência',
+													'type' => 'number',
+													'class' => 'form-control input-sm',
+													'min' => 1,
+													'step' => 1,
+													'value' => 1,
 													'required' => true
 												)
 											); ?>

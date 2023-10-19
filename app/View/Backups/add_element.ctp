@@ -1,6 +1,6 @@
 <div class="list-group-item" id="item_<?php echo $i; ?>">
 	<div class="row">
-		<div class="col-md-11">
+		<div class="col-md-9">
 			<?php echo $this->Form->input(
 				"Cliente.Backups.$i.bktnomearquivo",
 				array(
@@ -8,6 +8,20 @@
 					'type' => 'text',
 					'class' => 'form-control input-sm',
 					'maxlength' => '100',
+					'required' => true
+				)
+			); ?>
+		</div>
+		<div class="col-md-2" title="Quantas vezes o backup é realizado no dia">
+			<?php echo $this->Form->input(
+				"Cliente.Backups.$i.recorrencia",
+				array(
+					'label' => 'Recorrência',
+					'type' => 'number',
+					'class' => 'form-control input-sm',
+					'min' => 1,
+					'step' => 1,
+					'value' => 1,
 					'required' => true
 				)
 			); ?>
