@@ -24,6 +24,8 @@ class Backups extends AppModel
 	 */
 	public $displayField = 'bktnomearquivo';
 
+	// public $recursive = 2;
+
 	public $belongsTo = array(
 		'Cliente' => array(
 			'className' => 'Cliente', //className – define o model que será associado.
@@ -40,5 +42,19 @@ class Backups extends AppModel
 			'className' => 'Usuario',
 			'foreignKey' => 'bktusercodigo'
 		)
+	);
+
+	public $hasMany = array(
+		'Recorrencia' => array(
+			'className' => 'RecorrenciaBackup',
+			'foreignKey' => 'recbktcodigo',
+			'conditions' => array(
+				'recsituacao' => 'A'
+			)
+		),
+		// 'Historico' => array(
+		// 	'className' => 'Historico',
+		// 	'foreignKey' => 'hisbktcodigo'
+		// )
 	);
 }

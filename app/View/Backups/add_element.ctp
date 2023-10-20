@@ -14,7 +14,7 @@
 		</div>
 		<div class="col-md-2" title="Quantas vezes o backup é realizado no dia">
 			<?php echo $this->Form->input(
-				"Cliente.Backups.$i.recorrencia",
+				"Cliente.Backups.$i.bktrecorrencia",
 				array(
 					'label' => 'Recorrência',
 					'type' => 'number',

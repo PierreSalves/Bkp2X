@@ -24,6 +24,8 @@ class Cliente extends AppModel
 	 */
 	public $displayField = 'clndescricao';
 
+	public $recursive = 2;
+
 	public $hasMany = array(
 		'Backups' => array(
 			'className' => 'Backups',
@@ -36,10 +38,10 @@ class Cliente extends AppModel
 		)
 	);
 
-	public $belongsTo = array(
-		'Usuario' => array(
-			'className' => 'Usuario',
-			'foreignKey' => 'clnusercodigo'
-		)
-	);
+	// public $belongsTo = array(
+	// 	'Usuario' => array(
+	// 		'className' => 'Usuario',
+	// 		'foreignKey' => 'clnusercodigo'
+	// 	)
+	// );
 }

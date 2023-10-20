@@ -28,7 +28,6 @@ class BackupsController extends AppController
 				'clndescricaoreduzido' => 'ASC'
 			)
 		);
-
 		$this->set('bkp001', $this->Paginator->paginate('Cliente'));
 
 		$arrSituacoes = $this->Situacao->find(

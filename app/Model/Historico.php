@@ -1,21 +1,21 @@
 <?php
 App::uses('AppModel', 'Model');
 
-class Usuario extends AppModel
+class Historico extends AppModel
 {
 	/**
 	 * Use table
 	 *
 	 * @var mixed False or table name
 	 */
-	var $useTable = 'bkp002';
+	var $useTable = 'bkp004';
 
 	/**
 	 * Primary key field
 	 *
 	 * @var string
 	 */
-	public $primaryKey = 'usercodigo';
+	public $primaryKey = 'hiscodigo';
 
 	/**
 	 * Display field

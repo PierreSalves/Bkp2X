@@ -87,7 +87,6 @@ class ClienteController extends AppController
 				)
 			)
 		);
-
 		$this->set('cliente', $cliente);
 
 		if ($this->request->is('post')) {
@@ -101,21 +100,60 @@ class ClienteController extends AppController
 
 					if (
 						isset($cliente['Backups'][$key]) &&
-						$cliente['Backups'][$key]['bktnomearquivo'] == $backup['bktnomearquivo']
+						$cliente['Backups'][$key]['bktnomearquivo'] == $backup['bktnomearquivo'] &&
+						$cliente['Backups'][$key]['bktrecorrencia'] == $backup['bktrecorrencia']
 					) {
 						// Não faz nada
 					} else if (isset($cliente['Backups'][$key])) {
 
 						$editbackup[$key] = $cliente['Backups'][$key];
 						$editbackup[$key]['bktnomearquivo'] = $backup['bktnomearquivo'];
+						$editbackup[$key]['bktrecorrencia'] = $backup['bktrecorrencia'];
+
+						if ($backup['bktrecorrencia'] != $cliente['Backups'][$key]['bktrecorrencia']) {
+
+							foreach ($cliente['Backups'][$key]['Recorrencia'] as $key2 => $recorrencia1) {
+
+								$arrInativaRecorrencia[$key2]['reccodigo'] = $recorrencia1['reccodigo'];
+								$arrInativaRecorrencia[$key2]['recsituacao'] = 'I';
+								$arrInativaRecorrencia[$key2]['recdatasituacao'] = date('Y-m-d H:i:s');
+							}
+
+							$this->RecorrenciaBackup->saveAll($arrInativaRecorrencia);
+
+							for ($i = 1; $i <= $backup['bktrecorrencia']; $i++) {
+
+								$arrInsertRecorrencia[$i]['recbktcodigo'] = $cliente['Backups'][$key]['bktcodigo'];
+								$arrInsertRecorrencia[$i]['recnumero'] = $i;
+								$arrInsertRecorrencia[$i]['recsituacao'] = 'A';
+								$arrInsertRecorrencia[$i]['recdatasituacao'] = date('Y-m-d H:i:s');
+								$arrInsertRecorrencia[$i]['recdatacriacao'] = date('Y-m-d H:i:s');
+							}
+
+							$this->RecorrenciaBackup->saveAll($arrInsertRecorrencia);
+						}
 					} else if (!isset($cliente['Backups'][$key])) {
 
-						$editbackup[$key] = $backup;
-						$editbackup[$key]['bktclncodigo'] = $this->Cliente->id;
-						$editbackup[$key]['bktsituacao'] = 'A';
-						$editbackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
-						$editbackup[$key]['bktusercodigo'] = 1;
-						$editbackup[$key]['bktdatacriacao'] = date('Y-m-d H:i:s');
+						$insertbackup = $backup;
+						$insertbackup['bktclncodigo'] = $this->Cliente->id;
+						$insertbackup['bktsituacao'] = 'A';
+						$insertbackup['bktdatasituacao'] = date('Y-m-d H:i:s');
+						$insertbackup['bktusercodigo'] = 1;
+						$insertbackup['bktdatacriacao'] = date('Y-m-d H:i:s');
+
+						$this->Backups->create();
+						$this->Backups->save($insertbackup);
+
+						for ($i = 1; $i <= $backup['bktrecorrencia']; $i++) {
+
+							$arrInsertRecorrencia[$i]['recbktcodigo'] = $this->Backups->id;
+							$arrInsertRecorrencia[$i]['recnumero'] = $i;
+							$arrInsertRecorrencia[$i]['recsituacao'] = 'A';
+							$arrInsertRecorrencia[$i]['recdatasituacao'] = date('Y-m-d H:i:s');
+							$arrInsertRecorrencia[$i]['recdatacriacao'] = date('Y-m-d H:i:s');
+						}
+
+						$this->RecorrenciaBackup->saveAll($arrInsertRecorrencia);
 					}
 				}
 
@@ -126,18 +164,26 @@ class ClienteController extends AppController
 						$editbackup[$key] = $backupAtivo;
 						$editbackup[$key]['bktsituacao'] = 'I';
 						$editbackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
+
+						foreach ($cliente['Backups'][$key]['Recorrencia'] as $key2 => $recorrencia1) {
+
+							$arrInativaRecorrencia[$key2]['reccodigo'] = $recorrencia1['reccodigo'];
+							$arrInativaRecorrencia[$key2]['recsituacao'] = 'I';
+							$arrInativaRecorrencia[$key2]['recdatasituacao'] = date('Y-m-d H:i:s');
+						}
+
+						$this->RecorrenciaBackup->saveAll($arrInativaRecorrencia);
 					}
 				}
 
-				if ($this->Backups->saveAll($editbackup)) {
+				if (!empty($editbackup)) {
+					$this->Backups->saveAll($editbackup);
 
 					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
-					$this->redirect(array('action' => 'index'));
-				} else {
-					$this->Session->setFlash('Houve um Erro ao tentar Salvar o Cliente!', 'default', array('class' => 'alert alert-danger'));
-					$this->redirect(array('action' => 'index'));
 				}
 			}
+
+			$this->redirect(array('action' => 'index'));
 		}
 	}
 
