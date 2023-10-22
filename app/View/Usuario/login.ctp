@@ -26,7 +26,16 @@
         ) ?>
         <div class="panel-heading text-center azul-primary">
             <div class="panel-title">
-                <h1 class="text-white">Bkp Tracker</h1>
+                <div style="width: 100%;">
+                    <?php echo $this->Html->image(
+                        '/img/shield-dog-solid-white.png',
+                        array(
+                            'alt' => 'logo',
+                            'width' => '50'
+                        )
+                    ); ?>
+                    <h1 class="text-white null-margin">Bkp Tracker</h1>
+                </div>
             </div>
         </div>
 
@@ -36,7 +45,7 @@
                     <?php echo $this->Form->control(
                         'userlogin',
                         [
-							'name' => 'userlogin',
+                            'name' => 'userlogin',
                             'label' => false,
                             'type' => 'text',
                             'class' => 'form-control',
@@ -51,7 +60,7 @@
                     <?php echo $this->Form->control(
                         'userpassword',
                         [
-							'name' => 'userpassword',
+                            'name' => 'userpassword',
                             'label' => false,
                             'type' => 'password',
                             'class' => 'form-control',

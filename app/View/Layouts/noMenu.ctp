@@ -15,7 +15,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+ $cakeDescription = __d('cake_dev', 'BkpTracker');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
@@ -94,18 +94,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<nav class="navbar navbar-fixed-top">
 		<div class="row">
 			<div class="col-md-12">
+				<?php echo $this->Html->image(
+					'/img/shield-dog-solid-white.png',
+					array(
+						'alt' => 'logo',
+						'width' => '50',
+						'class' => 'pull-left'
+					)
+				); ?>
 				<h1 class="pull-left" style="margin: 0;padding: 5px 12px;">BkpTracker</h1>
 				<h1 class="pull-right" style="margin: 0;padding: 5px 12px;">
 					<div class="dropdown">
-						<button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							<span class="glyphicon glyphicon-user"></span>
-							<?php echo $this->Session->read('Auth.User.usernome');?>
+						<button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: 15px !important;min-width: 160px ">
+							<span class="glyphicon glyphicon-user"></span>&nbsp;
+							<?php echo $this->Session->read('Auth.User.usernome'); ?>&nbsp;&nbsp;
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-right pull-right" aria-labelledby="dropdownMenu1">
 							<li>
 								<?php echo $this->Html->link(
-									__('<i class="glyphicon glyphicon-log-out"></i>Sair'),
+									__('<i class="glyphicon glyphicon-log-out">&nbsp;</i>Sair'),
 									array(
 										'controller' => 'Usuario',
 										'action' => 'logout'

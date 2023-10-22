@@ -31,7 +31,7 @@
 			</div>
 		</div>
 		<div class="modal-body">
-		<?php echo $this->Flash->render('flash') ?>
+			<?php echo $this->Flash->render('flash') ?>
 			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
 					<h3 style="margin:0">Usuários</h3>
@@ -108,20 +108,21 @@
 		</div>
 		<div class="modal-footer" style="text-align: left;">
 			<div class="paginator">
-			<p>
-                    <?php
-                    echo $this->Paginator->counter(array(
-                        'format' => __('Página {:page} de {:pages}')
-                    ));
-                    ?>
-                </p>
-                <div class="pagination pagination-sm" style="margin:0">
-                    <li><?php echo $this->Paginator->prev('<' . __(' Anterior '), array(), null, array('class' => 'prev disabled')); ?></li>
-                    <li><?php echo $this->Paginator->numbers(array('separator' => '')); ?></li>
-                    <li><?php echo $this->Paginator->next(__(' Próximo ') . ' >', array(), null, array('class' => 'next disabled')); ?></li>
+				<p>
+					<?php
+					echo $this->Paginator->counter(array(
+						'format' => __('Página {:page} de {:pages}')
+					));
+					?>
+				</p>
+				<div class="pagination pagination-sm" style="margin:0">
+					<li><?php echo $this->Paginator->prev('<' . __(' Anterior '), array(), null, array('class' => 'prev disabled')); ?></li>
+					<li><?php echo $this->Paginator->numbers(array('separator' => '')); ?></li>
+					<li><?php echo $this->Paginator->next(__(' Próximo ') . ' >', array(), null, array('class' => 'next disabled')); ?></li>
 
-                </div>
+				</div>
 
 			</div>
 		</div>
 	</div>
+</div>

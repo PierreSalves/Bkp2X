@@ -37,7 +37,7 @@ class ClienteController extends AppController
 			$novoCliente = $this->request->data['Cliente'];
 			$novoCliente['clnsituacao'] = 'A';
 			$novoCliente['clndatasituacao'] = date('Y-m-d H:i:s');
-			$novoCliente['clnusercodigo'] = 1;
+			$novoCliente['clnusercodigo'] = $this->Session->read('Auth.User.usercodigo');;
 			$novoCliente['clndatacriacao'] = date('Y-m-d H:i:s');
 
 			if ($this->Cliente->save($novoCliente)) {
@@ -48,7 +48,7 @@ class ClienteController extends AppController
 					$novoBackup[$key]['bktclncodigo'] = $this->Cliente->id;
 					$novoBackup[$key]['bktsituacao'] = 'A';
 					$novoBackup[$key]['bktdatasituacao'] = date('Y-m-d H:i:s');
-					$novoBackup[$key]['bktusercodigo'] = 1;
+					$novoBackup[$key]['bktusercodigo'] = $this->Session->read('Auth.User.usercodigo');
 					$novoBackup[$key]['bktdatacriacao'] = date('Y-m-d H:i:s');
 
 					$this->Backups->save($novoBackup[$key]);
@@ -138,7 +138,7 @@ class ClienteController extends AppController
 						$insertbackup['bktclncodigo'] = $this->Cliente->id;
 						$insertbackup['bktsituacao'] = 'A';
 						$insertbackup['bktdatasituacao'] = date('Y-m-d H:i:s');
-						$insertbackup['bktusercodigo'] = 1;
+						$insertbackup['bktusercodigo'] = $this->Session->read('Auth.User.usercodigo');;
 						$insertbackup['bktdatacriacao'] = date('Y-m-d H:i:s');
 
 						$this->Backups->create();
