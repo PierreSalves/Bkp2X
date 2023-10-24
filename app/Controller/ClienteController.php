@@ -34,6 +34,18 @@ class ClienteController extends AppController
 
 		if ($this->request->is('post')) {
 
+			$situacaoFalha = $this->Situacao->find(
+				'first',
+				array(
+					'conditions' => array(
+						'sitsituacao' => 'A'
+					),
+					'order' => array(
+						'sitordem' => 'DESC'
+					),
+				)
+			);
+
 			$novoCliente = $this->request->data['Cliente'];
 			$novoCliente['clnsituacao'] = 'A';
 			$novoCliente['clndatasituacao'] = date('Y-m-d H:i:s');
@@ -57,6 +69,7 @@ class ClienteController extends AppController
 
 						$insertRecorrencia[$i]['recbktcodigo'] = $this->Backups->id;
 						$insertRecorrencia[$i]['recnumero']	= $i;
+						$insertRecorrencia[$i]['recsitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
 						$insertRecorrencia[$i]['recsituacao'] = 'A';
 						$insertRecorrencia[$i]['recdatasituacao'] = date('Y-m-d H:i:s');
 						$insertRecorrencia[$i]['recdatacriacao'] = date('Y-m-d H:i:s');
@@ -90,6 +103,18 @@ class ClienteController extends AppController
 		$this->set('cliente', $cliente);
 
 		if ($this->request->is('post')) {
+
+			$situacaoFalha = $this->Situacao->find(
+				'first',
+				array(
+					'conditions' => array(
+						'sitsituacao' => 'A'
+					),
+					'order' => array(
+						'sitordem' => 'DESC'
+					),
+				)
+			);
 
 			$editCliente = $this->request->data['Cliente'];
 			$editCliente['clncodigo'] = $clncodigo;
@@ -125,6 +150,7 @@ class ClienteController extends AppController
 
 								$arrInsertRecorrencia[$i]['recbktcodigo'] = $cliente['Backups'][$key]['bktcodigo'];
 								$arrInsertRecorrencia[$i]['recnumero'] = $i;
+								$arrInsertRecorrencia[$i]['recsitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
 								$arrInsertRecorrencia[$i]['recsituacao'] = 'A';
 								$arrInsertRecorrencia[$i]['recdatasituacao'] = date('Y-m-d H:i:s');
 								$arrInsertRecorrencia[$i]['recdatacriacao'] = date('Y-m-d H:i:s');

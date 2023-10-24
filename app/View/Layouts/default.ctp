@@ -87,6 +87,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	);
 	echo $this->fetch('script');
 	?>
+
+	<meta http-equiv="refresh" content="1800">
 </head>
 
 <body>

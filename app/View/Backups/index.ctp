@@ -24,3 +24,9 @@
 		</div>
 	<?php endforeach; ?>
 </div>
+
+<script>
+	setTimeout(function() {
+		window.location.href = '<?php echo $this->Html->url(array('controller' => 'Backups', 'action' => 'attBackups',)); ?>';
+	}, 600000);
+</script>
