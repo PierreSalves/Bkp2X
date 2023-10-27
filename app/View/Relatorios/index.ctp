@@ -31,12 +31,12 @@
 							<?php echo $this->Html->link(
 								'<h4 class="null-margin">
 									<i class="glyphicon glyphicon-chevron-right"></i>
-									Histórico de Situações Agrupadas no Período
+									Situações Agrupadas no Período por Cliente
 								</h4>
 								',
 								array(
 									'controller' => 'Relatorios',
-									'action' => 'histPeriodo'
+									'action' => 'resumoCliente'
 								),
 								array(
 									'escape' => false

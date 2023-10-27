@@ -90,7 +90,6 @@ class BackupsController extends AppController
 
 		foreach ($clientes as $key => $cliente) {
 
-
 			$dir = new Folder($cliente['Cliente']['clnbkpcaminho']);
 
 			foreach ($cliente['Backups'] as $key2 => $backup) {
