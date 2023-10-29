@@ -41,7 +41,7 @@ class AppController extends Controller
 		'Session',
 		'Auth' => array(
 			'loginAction' => array('controller' => 'Usuario', 'action' => 'login'),
-			'loginRedirect' => array('controller' => 'Backups', 'action' => 'index'),
+			'loginRedirect' => array('controller' => 'Backups', 'action' => 'attBackups'),
 			'logoutRedirect' => array('controller' => 'Usuario', 'action' => 'login'),
 			'authenticate' => array(
 				'Form' => array(

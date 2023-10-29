@@ -1,4 +1,3 @@
-
 <div class="modal-dialog" style="width:auto;margin-top:2em">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -32,21 +31,34 @@
 						[
 							'url' => [
 								'controller' => 'Relatorios',
-								'action' => 'resumoCliente',
+								'action' => 'resumoClienteImpressao',
 							],
 							'type' => 'post',
 							'target' => '_blank',
 						]
 					); ?>
 					<div class="row">
-					<div class="col-md-4">
+						<div class="col-md-4">
 							<?php echo $this->Form->input(
 								'cliente',
 								array(
 									'label' => 'Cliente',
 									'type' => 'select',
-									'options' => array(),
-									'empty' => 0,
+									'options' => $optClientes,
+									'empty' => false,
+									'class' => 'form-control',
+									'required'
+								)
+							); ?>
+						</div>
+						<div class="col-md-4">
+							<?php echo $this->Form->input(
+								'situacao',
+								array(
+									'label' => 'Situação',
+									'type' => 'select',
+									'options' => $optSituacao,
+									'empty' => false,
 									'class' => 'form-control',
 									'required'
 								)
@@ -78,7 +90,40 @@
 								)
 							); ?>
 						</div>
-						<div class="col-md-2">
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<?php echo $this->Form->input(
+								'ordem',
+								array(
+									'label' => 'Ordenar por',
+									'type' => 'select',
+									'options' => array(
+										1 => 'Cliente',
+										2 => 'Situação'
+									),
+									'empty' => false,
+									'class' => 'form-control'
+								)
+							); ?>
+						</div>
+						<div class="col-md-4">
+							<?php echo $this->Form->input(
+								'layout',
+								array(
+									'label' => 'Tamanho da Página',
+									'type' => 'select',
+									'options' => array(
+										1 => 'A4 - Retrato',
+										2 => 'A4 - Paisagem'
+									),
+									'empty' => false,
+									'class' => 'form-control'
+								)
+							); ?>
+						</div>
+
+						<div class="col-md-5 text-right">
 							<?php echo $this->Form->button(
 								'<i class="glyphicon glyphicon-filter"></i> Filtrar',
 								array(

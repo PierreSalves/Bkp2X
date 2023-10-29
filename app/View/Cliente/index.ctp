@@ -8,7 +8,7 @@
 							__('<i class="glyphicon glyphicon-home"></i>'),
 							[
 								'controller' => 'Backups',
-								'action' => 'index'
+								'action' => 'attBackups'
 							],
 							[
 								'class' => 'btn btn-default',
