@@ -64,7 +64,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			border-radius: 8px;
 
 			width: 210mm;
-			height: 297mm;
+			min-height: 297mm;
 		}
 
 		.page-landscape {
@@ -76,7 +76,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			border-radius: 8px;
 
 			width: 297mm;
-			height: 210mm;
+			min-height: 210mm;
 		}
 
 		@media print {

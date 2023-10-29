@@ -63,12 +63,12 @@
 							<?php echo $this->Html->link(
 								'<h4 class="null-margin">
 									<i class="glyphicon glyphicon-chevron-right"></i>
-									Resumo de Situações no Período
+									Resumo Diário dos Clientes no Período
 								</h4>
 								',
 								array(
 									'controller' => 'Relatorios',
-									'action' => 'index'
+									'action' => 'resumoDiario'
 								),
 								array(
 									'escape' => false

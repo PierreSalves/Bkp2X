@@ -16,7 +16,7 @@
 	<hr>
 	<legend class="text-left h3">Resumo de Situações Agrupadas no Período de <?php echo $periodo['inicio']; ?> até <?php echo $periodo['termino']; ?> por Cliente</legend>
 
-	<table class="table table-condensed">
+	<table class="table table-condensed table-striped">
 		<thead>
 			<tr>
 				<th class="text-center"><b>Código</b></th>

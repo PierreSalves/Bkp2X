@@ -35,7 +35,7 @@ class Historico extends AppModel
 		)
 	);
 
-	public function resumoCliente($dataInicio, $dataFim, $cliente, $situacao, $ordem)
+	public function resumoCliente($dataInicio, $dataFim, $cliente, $situacao, $ordem, $user)
 	{
 
 		$formatedInicio = date('Y-m-d', $dataInicio);
@@ -77,6 +77,7 @@ class Historico extends AppModel
 				INNER JOIN bkp000 bkt ON bkt.bktcodigo = his.hisbktcodigo AND bkt.bktsituacao = 'A'
 				INNER JOIN bkp001 cln ON cln.clncodigo = bkt.bktclncodigo AND cln.clnsituacao = 'A'
 			WHERE hisdata BETWEEN '$formatedInicio' AND '$formatedFim'
+				AND cln.clnusercodigo = $user
 				$whereCliente
 				$whereSituacao
 			GROUP BY
@@ -97,7 +98,7 @@ class Historico extends AppModel
 		);
 	}
 
-	public function resumoSituacao($dataInicio, $dataFim, $cliente, $situacao, $ordem)
+	public function resumoSituacao($dataInicio, $dataFim, $cliente, $situacao, $ordem, $user)
 	{
 
 		$formatedInicio = date('Y-m-d', $dataInicio);
@@ -137,6 +138,7 @@ class Historico extends AppModel
 				INNER JOIN bkp000 bkt ON bkt.bktcodigo = his.hisbktcodigo AND bkt.bktsituacao = 'A'
 				INNER JOIN bkp001 cln ON cln.clncodigo = bkt.bktclncodigo AND cln.clnsituacao = 'A'
 			WHERE hisdata BETWEEN '$formatedInicio' AND '$formatedFim'
+				AND cln.clnusercodigo = $user
 				$whereCliente
 				$whereSituacao
 			GROUP BY
@@ -149,6 +151,62 @@ class Historico extends AppModel
 				sit.sitcorfonte
 			ORDER BY
 				sit.sitreduzido $orderBy
+		"
+		);
+	}
+
+	public function resumoDiario($dataInicio, $dataFim, $cliente, $ordem, $user)
+	{
+
+		$formatedInicio = date('Y-m-d', $dataInicio);
+		$formatedFim = date('Y-m-d', $dataFim);
+
+		if ($cliente != 0) {
+			$whereCliente = "AND cln.clncodigo = $cliente";
+		} else {
+			$whereCliente = '';
+		}
+
+		if ($ordem == 1) {
+			$orderBy = "ASC";
+		} else {
+			$orderBy = "DESC";
+		}
+
+		return $this->query(
+			"SELECT
+				his.hisdata,
+				cln.clncodigo,
+				cln.clndescricao,
+				cln.clndescricaoreduzido,
+				bkt.bktnomearquivo,
+				bkt.bktrecorrencia,
+				rec.recnumero,
+				sit.sitreduzido,
+				sit.sitdescricao
+			FROM bkp004 his
+				INNER JOIN bkp005 rec ON rec.reccodigo = his.hisreccodigo AND rec.recsituacao = 'A'
+				INNER JOIN bkp003 sit ON sit.sitcodigo = his.hissitcodigo AND sit.sitsituacao = 'A'
+				INNER JOIN bkp000 bkt ON bkt.bktcodigo = his.hisbktcodigo AND bkt.bktsituacao = 'A'
+				INNER JOIN bkp001 cln ON cln.clncodigo = bkt.bktclncodigo AND cln.clnsituacao = 'A'
+			WHERE hisdata BETWEEN '$formatedInicio' AND '$formatedFim'
+				AND cln.clnusercodigo = $user
+				$whereCliente
+			GROUP BY
+				his.hisdata,
+				cln.clncodigo,
+				cln.clndescricao,
+				cln.clndescricaoreduzido,
+				bkt.bktnomearquivo,
+				bkt.bktrecorrencia,
+				rec.recnumero,
+				sit.sitreduzido,
+				sit.sitdescricao
+			ORDER BY
+				his.hisdata $orderBy,
+				cln.clndescricao ASC,
+				bkt.bktnomearquivo ASC,
+				rec.recnumero ASC
 		"
 		);
 	}
