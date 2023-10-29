@@ -23,7 +23,7 @@
 			<?php echo $this->Flash->render('flash') ?>
 			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
-					<h3 style="margin:0">Histórico de Situações Agrupadas no Período</h3>
+					<h3 style="margin:0">Resumo de Clientes Agrupados no Período por Situação</h3>
 				</div>
 				<div class="panel-body">
 					<?php echo $this->Form->create(
@@ -31,13 +31,26 @@
 						[
 							'url' => [
 								'controller' => 'Relatorios',
-								'action' => 'histPeriodo',
+								'action' => 'resumoSituacaoImpressao',
 							],
 							'type' => 'post',
 							'target' => '_blank',
 						]
 					); ?>
 					<div class="row">
+						<div class="col-md-4">
+							<?php echo $this->Form->input(
+								'cliente',
+								array(
+									'label' => 'Cliente',
+									'type' => 'select',
+									'options' => $optClientes,
+									'empty' => false,
+									'class' => 'form-control',
+									'required'
+								)
+							); ?>
+						</div>
 						<div class="col-md-2">
 							<?php echo $this->Form->input(
 								'dataInicio',
@@ -64,7 +77,54 @@
 								)
 							); ?>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-4">
+							<?php echo $this->Form->input(
+								'situacao',
+								array(
+									'label' => 'Situação',
+									'type' => 'select',
+									'options' => $optSituacao,
+									'empty' => false,
+									'class' => 'form-control',
+									'required'
+								)
+							); ?>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3">
+							<?php echo $this->Form->input(
+								'ordem',
+								array(
+									'label' => 'Ordenar por',
+									'type' => 'select',
+									'options' => array(
+										1 => 'Situação Ascendente',
+										2 => 'Situação Decrescente'
+									),
+									'empty' => false,
+									'class' => 'form-control'
+								)
+							); ?>
+						</div>
+						<div class="col-md-4">
+							<?php echo $this->Form->input(
+								'layout',
+								array(
+									'label' => 'Tamanho da Página',
+									'type' => 'select',
+									'options' => array(
+										1 => 'A4 - Retrato',
+										2 => 'A4 - Paisagem'
+									),
+									'empty' => false,
+									'class' => 'form-control'
+								)
+							); ?>
+						</div>
+
+						<div class="col-md-5 text-right">
 							<?php echo $this->Form->button(
 								'<i class="glyphicon glyphicon-filter"></i> Filtrar',
 								array(

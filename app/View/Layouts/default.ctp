@@ -103,7 +103,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 						'class' => 'pull-left'
 					)
 				); ?>
+
 				<h1 class="pull-left" style="margin: 0;padding: 5px 12px;">BkpTracker</h1>
+
 				<h1 class="pull-right" style="margin: 0;padding: 5px 12px;">
 					<div class="dropdown">
 						<button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: 15px !important;min-width: 160px;">
@@ -129,6 +131,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 							</li>
 						</ul>
 					</div>
+				</h1>
+
+				<h1 class="pull-right" style="margin: 0;padding: 5px 12px;">
+					<?php echo $this->Html->link(
+						'<i class="glyphicon glyphicon-cloud-download"></i>',
+						array(
+							'controller' => 'Backups',
+							'action' => 'attBackups'
+						),
+						array(
+							'class' => 'btn btn-primary',
+							'title' => 'Atualizar Situações',
+							'escape' => false
+						)
+					);
+					?>
 				</h1>
 			</div>
 		</div>

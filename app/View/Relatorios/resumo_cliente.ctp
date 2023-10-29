@@ -40,19 +40,6 @@
 					<div class="row">
 						<div class="col-md-4">
 							<?php echo $this->Form->input(
-								'cliente',
-								array(
-									'label' => 'Cliente',
-									'type' => 'select',
-									'options' => $optClientes,
-									'empty' => false,
-									'class' => 'form-control',
-									'required'
-								)
-							); ?>
-						</div>
-						<div class="col-md-4">
-							<?php echo $this->Form->input(
 								'situacao',
 								array(
 									'label' => 'Situação',
@@ -90,7 +77,21 @@
 								)
 							); ?>
 						</div>
+						<div class="col-md-4">
+							<?php echo $this->Form->input(
+								'cliente',
+								array(
+									'label' => 'Cliente',
+									'type' => 'select',
+									'options' => $optClientes,
+									'empty' => false,
+									'class' => 'form-control',
+									'required'
+								)
+							); ?>
+						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-md-3">
 							<?php echo $this->Form->input(

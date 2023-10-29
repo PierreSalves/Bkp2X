@@ -14,27 +14,25 @@
 		</div>
 	</div>
 	<hr>
-	<legend class="text-left h3">Resumo de Situações Agrupadas no Período de <?php echo $periodo['inicio']; ?> até <?php echo $periodo['termino']; ?> por Cliente</legend>
+	<legend class="text-left h3">Resumo de Clientes Agrupadas no Período de <?php echo $periodo['inicio']; ?> até <?php echo $periodo['termino']; ?> por Situação</legend>
 
 	<table class="table table-condensed">
 		<thead>
 			<tr>
 				<th class="text-center"><b>Código</b></th>
-				<th><b>Cliente</b></th>
-				<th><b>Backup</b></th>
-				<th><b>Número</b></th>
 				<th><b>Situação</b></th>
+				<th><b>Descrição</b></th>
+				<th class="text-center"><b>Número</b></th>
 				<th class="text-center"><b>Quantidade</b></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($dadosRelatorio as $key => $linha) : ?>
 				<tr>
-					<td class="text-center"><?php echo $linha['cln']['clncodigo'] ?></td>
-					<td><?php echo $linha['cln']['clndescricao'] ?></td>
-					<td><?php echo $linha['bkt']['bktnomearquivo'] ?></td>
-					<td><?php echo $linha['rec']['recnumero'] ?></td>
+					<td class="text-center"><?php echo $linha['sit']['sitcodigo'] ?></td>
 					<td><?php echo $linha['sit']['sitreduzido'] ?></td>
+					<td><?php echo $linha['sit']['sitdescricao'] ?></td>
+					<td class="text-center"><?php echo $linha['sit']['sitordem'] ?></td>
 					<td class="text-center"><?php echo $linha[0]['count'] ?></td>
 				</tr>
 			<?php endforeach; ?>
