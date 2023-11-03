@@ -21,7 +21,8 @@ class ClienteController extends AppController
 		$this->Paginator->settings = array(
 			'limit' => 5,
 			'conditions' => array(
-				'clnsituacao' => 'A'
+				'clnsituacao' => 'A',
+				'clnusercodigo' => $this->Session->read('Auth.User.usercodigo')
 			)
 		);
 

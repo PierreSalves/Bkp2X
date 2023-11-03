@@ -98,7 +98,7 @@
 										<td><?php echo $cliente['Cliente']['clnbkpcaminho']; ?></td>
 										<td><?php echo $cliente['Cliente']['clnchavelogin']; ?></td>
 										<td><?php echo $cliente['Cliente']['clnchavepwd']; ?></td>
-										<td><?php echo $cliente['Cliente']['clnsituacao']; ?></td>
+										<td class="text-center"><?php echo $cliente['Cliente']['clnsituacao']; ?></td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>

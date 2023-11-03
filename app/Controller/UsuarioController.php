@@ -46,6 +46,11 @@ class UsuarioController extends AppController
 
 	function index()
 	{
+		if ($this->Session->read('Auth.User.useradm') != 'S') {
+			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
+		};
+
 		$this->layout = 'noMenu';
 
 		$this->Paginator->settings = array(
@@ -60,6 +65,11 @@ class UsuarioController extends AppController
 
 	function add()
 	{
+		if ($this->Session->read('Auth.User.useradm') != 'S') {
+			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
+		};
+
 		$this->layout = 'noMenu';
 
 		if ($this->request->is('post')) {
@@ -78,6 +88,11 @@ class UsuarioController extends AppController
 
 	function edit($usercodigo)
 	{
+		if ($this->Session->read('Auth.User.useradm') != 'S') {
+			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
+		};
+
 		$this->layout = 'noMenu';
 
 		$this->set('usuario', $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo))));
@@ -97,6 +112,11 @@ class UsuarioController extends AppController
 
 	function view($usercodigo)
 	{
+		if ($this->Session->read('Auth.User.useradm') != 'S') {
+			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
+		};
+
 		$this->layout = 'noMenu';
 
 		$this->set('usuario', $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo))));
@@ -104,6 +124,11 @@ class UsuarioController extends AppController
 
 	function delete($usercodigo)
 	{
+		if ($this->Session->read('Auth.User.useradm') != 'S') {
+			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
+		};
+
 		$this->layout = null;
 		$this->autoRender = false;
 

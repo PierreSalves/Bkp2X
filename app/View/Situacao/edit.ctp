@@ -79,6 +79,7 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
+									'<a href="javascript:escolherCor(\'#ffffff\',\'sitcorprimaria\')" class="white">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorprimaria\')" class="cinza-claro">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorprimaria\')" class="cinza">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#85C1E9\',\'sitcorprimaria\')" class="azul-secondary">&nbsp;</a>',
@@ -122,6 +123,7 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
+									'<a href="javascript:escolherCor(\'#ffffff\',\'sitcorsecundaria\')" class="white">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorsecundaria\')" class="cinza-claro">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorsecundaria\')" class="cinza">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#363636\',\'sitcorsecundaria\')" class="cinza-escuro">&nbsp;</a>',
@@ -165,6 +167,7 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
+									'<a href="javascript:escolherCor(\'#ffffff\',\'sitcorfonte\')" class="white">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorfonte\')" class="cinza-claro">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorfonte\')" class="cinza">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#363636\',\'sitcorfonte\')" class="cinza-escuro">&nbsp;</a>',

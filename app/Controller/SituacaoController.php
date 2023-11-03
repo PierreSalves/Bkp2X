@@ -27,7 +27,7 @@ class SituacaoController extends AppController
 			)
 		);
 
-		$this->set('listaClientes', $this->Paginator->paginate('Situacao'));
+		$this->set('listaSituacao', $this->Paginator->paginate('Situacao'));
 	}
 
 	function add()

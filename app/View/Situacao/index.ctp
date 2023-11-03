@@ -34,7 +34,7 @@
 			<?php echo $this->Flash->render('flash') ?>
 			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
-					<h3 style="margin:0">Clientes</h3>
+					<h3 style="margin:0">Situações</h3>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -52,7 +52,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($listaClientes as $situacao) : ?>
+								<?php foreach ($listaSituacao as $situacao) : ?>
 									<tr>
 										<td class="acoes text-center">
 											<?php echo $this->Html->link(

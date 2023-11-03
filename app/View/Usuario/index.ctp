@@ -86,8 +86,7 @@
 													'class' => 'btn btn-xs btn-danger',
 													'escape' => false,
 													'confirm' => __(
-														'Tem certeza que deseja Excluir o Usuário "{0}"?',
-														$usuario['Usuario']['usernome']
+														'Tem certeza que deseja Excluir o Usuário "' . $usuario['Usuario']['usernome'] . '"?',
 													)
 												]
 											) ?>

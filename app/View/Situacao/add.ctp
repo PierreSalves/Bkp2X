@@ -69,6 +69,7 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
+									'<a href="javascript:escolherCor(\'#ffffff\',\'sitcorprimaria\')" class="white">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorprimaria\')" class="cinza-claro">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorprimaria\')" class="cinza">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#85C1E9\',\'sitcorprimaria\')" class="azul-secondary">&nbsp;</a>',
@@ -90,16 +91,16 @@
 					</div>
 				</div>
 				<div class="col-md-3">
-					<?php echo $this->Form->label('sitcorsecondary', 'Cor Secundária'); ?>
+					<?php echo $this->Form->label('sitcorsecundaria', 'Cor Secundária'); ?>
 					<div class="input-group">
 						<?php echo $this->Form->input(
-							'sitcorsecondary',
+							'sitcorsecundaria',
 							[
 								'type' => 'text',
 								'class' => 'form-control input-group-addon input-sm',
 								'div' => false,
 								'label' => false,
-								'id' => 'sitcorsecondary',
+								'id' => 'sitcorsecundaria',
 								'required',
 								'readonly'
 							]
@@ -111,16 +112,17 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
-									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorsecondary\')" class="cinza-claro">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorsecondary\')" class="cinza">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#363636\',\'sitcorsecondary\')" class="cinza-escuro">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#000000\',\'sitcorsecondary\')" class="preto">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#85C1E9\',\'sitcorsecondary\')" class="azul-secondary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#3498DB\',\'sitcorsecondary\')" class="azul-primary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#58D68D\',\'sitcorsecondary\')" class="verde-secondary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#2ECC71\',\'sitcorsecondary\')" class="verde-primary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#F7DC6F\',\'sitcorsecondary\')" class="laranja-secondary">&nbsp;</a>',
-									'<a href="javascript:escolherCor(\'#F39C12\',\'sitcorsecondary\')" class="laranja-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#ffffff\',\'sitcorsecundaria\')" class="white">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorsecundaria\')" class="cinza-claro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorsecundaria\')" class="cinza">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#363636\',\'sitcorsecundaria\')" class="cinza-escuro">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#000000\',\'sitcorsecundaria\')" class="preto">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#85C1E9\',\'sitcorsecundaria\')" class="azul-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#3498DB\',\'sitcorsecundaria\')" class="azul-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#58D68D\',\'sitcorsecundaria\')" class="verde-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#2ECC71\',\'sitcorsecundaria\')" class="verde-primary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F7DC6F\',\'sitcorsecundaria\')" class="laranja-secondary">&nbsp;</a>',
+									'<a href="javascript:escolherCor(\'#F39C12\',\'sitcorsecundaria\')" class="laranja-primary">&nbsp;</a>',
 								),
 								array(
 									'class' => 'dropdown-menu dropdown-menu-right pull-right',
@@ -153,6 +155,7 @@
 							</button>
 							<?php echo $this->Html->nestedList(
 								array(
+									'<a href="javascript:escolherCor(\'#ffffff\',\'sitcorfonte\')" class="white">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#e5e5e5\',\'sitcorfonte\')" class="cinza-claro">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#CBCBCB\',\'sitcorfonte\')" class="cinza">&nbsp;</a>',
 									'<a href="javascript:escolherCor(\'#363636\',\'sitcorfonte\')" class="cinza-escuro">&nbsp;</a>',

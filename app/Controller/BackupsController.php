@@ -61,7 +61,8 @@ class BackupsController extends AppController
 			'first',
 			array(
 				'conditions' => array(
-					'sitsituacao' => 'A'
+					'sitsituacao' => 'A',
+					'situsercodigo' => $this->Session->read('Auth.User.usercodigo'),
 				),
 				'order' => array(
 					'sitordem' => 'ASC'
@@ -72,7 +73,8 @@ class BackupsController extends AppController
 			'first',
 			array(
 				'conditions' => array(
-					'sitsituacao' => 'A'
+					'sitsituacao' => 'A',
+					'situsercodigo' => $this->Session->read('Auth.User.usercodigo'),
 				),
 				'order' => array(
 					'sitordem' => 'DESC'
