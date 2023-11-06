@@ -1,3 +1,15 @@
+function openModal(url, id) {
+
+	$.ajax({
+		type: "GET",
+		url: url,
+	}).done(function (data) {
+		$(id).append(data);
+	});
+
+}
+
+
 function addElements(url, id) {
 
 	if (!window.sessionStorage['i']) {
@@ -24,6 +36,6 @@ function removeElements(id) {
 function escolherCor(color, id) {
 
 	$(`#${id}`).val(color);
-	$(`#${id}`).css('backgroundColor',color);
-	$(`#${id}`).css('color',color);
+	$(`#${id}`).css('backgroundColor', color);
+	$(`#${id}`).css('color', color);
 }

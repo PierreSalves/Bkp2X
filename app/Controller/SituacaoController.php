@@ -32,7 +32,7 @@ class SituacaoController extends AppController
 
 	function add()
 	{
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		if ($this->request->is('post')) {
 
@@ -55,7 +55,7 @@ class SituacaoController extends AppController
 
 	function view($sitcodigo)
 	{
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		$dadosSit = $this->Situacao->find(
 			'first',
@@ -70,7 +70,7 @@ class SituacaoController extends AppController
 
 	function edit($sitcodigo)
 	{
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		$dadosSit = $this->Situacao->find(
 			'first',

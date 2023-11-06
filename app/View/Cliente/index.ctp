@@ -16,22 +16,22 @@
 							]
 						) ?>
 						&nbsp;
-						<?php echo $this->Html->link(
+						<?php echo $this->Form->button(
 							__('<i class="glyphicon glyphicon-plus"></i> Adicionar Cliente'),
 							[
-								'action' => 'add'
-							],
-							[
+								'data-toggle' => 'modal',
+								'data-target' => '#modalClientes',
 								'class' => 'btn btn-primary',
 								'escape' => false,
+								'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Cliente', 'action' => 'add']) . '\',\'#modalClientes\')'
 							]
-						) ?>
+						); ?>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="modal-body">
-		<?php echo $this->Flash->render('flash') ?>
+			<?php echo $this->Flash->render('flash') ?>
 			<div class="panel panel-default null-margin">
 				<div class="panel-heading">
 					<h3 style="margin:0">Clientes</h3>
@@ -55,28 +55,26 @@
 								<?php foreach ($listaClientes as $cliente) : ?>
 									<tr>
 										<td class="acoes text-center">
-											<?php echo $this->Html->link(
+											<?php echo $this->Form->button(
 												__('<i class="glyphicon glyphicon-search"></i>'),
 												[
-													'action' => 'view',
-													$cliente['Cliente']['clncodigo']
-												],
-												[
+													'data-toggle' => 'modal',
+													'data-target' => '#modalClientes',
 													'class' => 'btn btn-xs btn-success',
 													'escape' => false,
+													'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Cliente', 'action' => 'view', $cliente['Cliente']['clncodigo']]) . '\',\'#modalClientes\')'
 												]
-											) ?>
-											<?php echo $this->Html->link(
+											); ?>
+											<?php echo $this->Form->button(
 												__('<i class="glyphicon glyphicon-edit"></i>'),
 												[
-													'action' => 'edit',
-													$cliente['Cliente']['clncodigo']
-												],
-												[
+													'data-toggle' => 'modal',
+													'data-target' => '#modalClientes',
 													'class' => 'btn btn-xs btn-warning',
 													'escape' => false,
+													'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Cliente', 'action' => 'edit', $cliente['Cliente']['clncodigo']]) . '\',\'#modalClientes\')'
 												]
-											) ?>
+											); ?>
 											<?php echo $this->Form->postLink(
 												__('<i class="glyphicon glyphicon-trash"></i>'),
 												[
@@ -127,3 +125,4 @@
 		</div>
 	</div>
 </div>
+<div class='modal fade' id='modalClientes' tabindex='-1' role='dialog' aria-labelledby='' aria-hidden='true' data-backdrop="static"></div>

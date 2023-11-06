@@ -31,7 +31,7 @@ class ClienteController extends AppController
 
 	function add()
 	{
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		if ($this->request->is('post')) {
 
@@ -91,7 +91,7 @@ class ClienteController extends AppController
 
 	function edit($clncodigo)
 	{
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		$cliente = $this->Cliente->find(
 			'first',
@@ -216,7 +216,7 @@ class ClienteController extends AppController
 
 	function view($clncodigo)
 	{
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		$cliente = $this->Cliente->find(
 			'first',

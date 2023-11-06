@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -14,4 +15,6 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<?php echo $this->fetch('content'); ?>
+<div class="container">
+	<?php echo $this->fetch('content'); ?>
+</div>

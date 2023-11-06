@@ -70,7 +70,7 @@ class UsuarioController extends AppController
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		if ($this->request->is('post')) {
 
@@ -93,7 +93,7 @@ class UsuarioController extends AppController
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		$this->set('usuario', $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo))));
 
@@ -117,7 +117,7 @@ class UsuarioController extends AppController
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
-		$this->layout = 'noMenu';
+		$this->layout = 'ajax';
 
 		$this->set('usuario', $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo))));
 	}

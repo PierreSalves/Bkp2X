@@ -16,16 +16,16 @@
 							]
 						) ?>
 						&nbsp;
-						<?php echo $this->Html->link(
+						<?php echo $this->Form->button(
 							__('<i class="glyphicon glyphicon-plus"></i> Adicionar Situação'),
 							[
-								'action' => 'add'
-							],
-							[
+								'data-toggle' => 'modal',
+								'data-target' => '#modalSituacao',
 								'class' => 'btn btn-primary',
 								'escape' => false,
+								'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Situacao', 'action' => 'add']) . '\',\'#modalSituacao\')'
 							]
-						) ?>
+						); ?>
 					</div>
 				</div>
 			</div>
@@ -55,28 +55,26 @@
 								<?php foreach ($listaSituacao as $situacao) : ?>
 									<tr>
 										<td class="acoes text-center">
-											<?php echo $this->Html->link(
+											<?php echo $this->Form->button(
 												__('<i class="glyphicon glyphicon-search"></i>'),
 												[
-													'action' => 'view',
-													$situacao['Situacao']['sitcodigo']
-												],
-												[
+													'data-toggle' => 'modal',
+													'data-target' => '#modalSituacao',
 													'class' => 'btn btn-xs btn-success',
 													'escape' => false,
+													'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Situacao', 'action' => 'view', $situacao['Situacao']['sitcodigo']]) . '\',\'#modalSituacao\')'
 												]
-											) ?>
-											<?php echo $this->Html->link(
+											); ?>
+											<?php echo $this->Form->button(
 												__('<i class="glyphicon glyphicon-edit"></i>'),
 												[
-													'action' => 'edit',
-													$situacao['Situacao']['sitcodigo']
-												],
-												[
+													'data-toggle' => 'modal',
+													'data-target' => '#modalSituacao',
 													'class' => 'btn btn-xs btn-warning',
 													'escape' => false,
+													'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Situacao', 'action' => 'edit', $situacao['Situacao']['sitcodigo']]) . '\',\'#modalSituacao\')'
 												]
-											) ?>
+											); ?>
 											<?php echo $this->Form->postLink(
 												__('<i class="glyphicon glyphicon-trash"></i>'),
 												[
@@ -127,3 +125,4 @@
 		</div>
 	</div>
 </div>
+<div class='modal fade' id='modalSituacao' tabindex='-1' role='dialog' aria-labelledby='' aria-hidden='true' data-backdrop="static"></div>
