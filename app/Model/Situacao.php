@@ -21,6 +21,6 @@ class Situacao extends AppModel {
      *
      * @var string
      */
-    public $displayField = 'sitdescricao';
+    public $displayField = 'sitreduzido';
 
 }

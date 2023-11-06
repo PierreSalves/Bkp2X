@@ -24,6 +24,8 @@ class Backups extends AppModel
 	 */
 	public $displayField = 'bktnomearquivo';
 
+	// public $recursive = 2;
+
 	public $belongsTo = array(
 		'Cliente' => array(
 			'className' => 'Cliente', //className – define o model que será associado.
@@ -32,13 +34,23 @@ class Backups extends AppModel
 			'fields' => array(), //fields - lista de campos a serem recuperados quando os dados do model associado são coletados. Retorna todos os campos por padrão.
 			'order' => array() //order – define a ordem de retorno das linhas associadas.
 		),
-		'Situacao' => array(
-			'className' => 'Situacao',
-			'foreignKey' => 'bktsitcodigo',
-		),
 		'Usuario' => array(
 			'className' => 'Usuario',
 			'foreignKey' => 'bktusercodigo'
 		)
+	);
+
+	public $hasMany = array(
+		'Recorrencia' => array(
+			'className' => 'RecorrenciaBackup',
+			'foreignKey' => 'recbktcodigo',
+			'conditions' => array(
+				'recsituacao' => 'A'
+			)
+		),
+		// 'Historico' => array(
+		// 	'className' => 'Historico',
+		// 	'foreignKey' => 'hisbktcodigo'
+		// )
 	);
 }

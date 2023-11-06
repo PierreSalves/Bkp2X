@@ -1,15 +1,32 @@
+<?php echo $this->Flash->render('flash') ?>
 <div class="row">
-    <?php foreach ($bkp000 as $backup) : ?>
-        <div class="col-md-3">
-            <div class="panel <?php echo 'verde-primary'; ?>">
-                <div class="panel-heading panel-title <?php echo 'verde-primary'; ?>">
-                    <?php echo $backup['Cliente']['clndescricaoreduzido'] ?>
-                </div>
-                <div class="panel-body <?php echo 'verde-secondary'; //SITUAÇÃO DO CARTÃO
-                                        ?>">
-                    <?php echo $backup['Cliente']['clndescricao'] ?>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
+	<?php foreach ($bkp001 as $cliente) : ?>
+		<div class="col-md-3">
+			<div class="panel" style="background-color: <?php echo $cliente['Cliente']['clncorprimaria']; ?>;">
+				<div class="panel-heading panel-title" style="background-color: <?php echo $cliente['Cliente']['clncorprimaria']; ?>;color: <?php echo $cliente['Cliente']['clncorfonte']; ?>;">
+					<?php echo $cliente['Cliente']['clndescricaoreduzido']; ?>
+				</div>
+				<div class="panel-body card-body" style="background-color: <?php echo $cliente['Cliente']['clncorsecundaria']; ?>;">
+					<?php echo $cliente['Cliente']['clndescricao']; ?>
+					<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
+						<?php foreach ($backup['Recorrencia'] as $key2 => $rec) : ?>
+							<div class="list-group-item" style="
+								background-color: <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorprimaria'] ?>;
+								color: <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorfonte'] ?>;
+								border: 1px solid <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorprimaria'] ?>;
+								">
+								<?php echo $backup['bktnomearquivo'] . '_' . $rec['recnumero'] ?>
+							</div>
+						<?php endforeach; ?>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
 </div>
+
+<script>
+	setTimeout(function() {
+		window.location.href = '<?php echo $this->Html->url(array('controller' => 'Backups', 'action' => 'attBackups',)); ?>';
+	}, 600000);
+</script>
