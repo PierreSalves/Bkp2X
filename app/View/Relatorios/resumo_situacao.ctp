@@ -58,8 +58,8 @@
 									'label' => 'Data de Início',
 									'type' => 'text',
 									'maxlength' => 10,
-									'placeholder' => 'dd/mm/yyyy',
-									'class' => 'form-control',
+									'placeholder' => '01/01/2023',
+									'class' => 'form-control datepicker',
 									'required'
 								)
 							); ?>
@@ -71,8 +71,8 @@
 									'label' => 'Data de Término',
 									'type' => 'text',
 									'maxlength' => 10,
-									'placeholder' => 'dd/mm/yyyy',
-									'class' => 'form-control',
+									'placeholder' => '01/01/2023',
+									'class' => 'form-control datepicker',
 									'required'
 								)
 							); ?>
