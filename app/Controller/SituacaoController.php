@@ -44,10 +44,10 @@ class SituacaoController extends AppController
 
 			if ($this->Situacao->save($novaSituacao)) {
 
-				$this->Session->setFlash('Situação Salva com Sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash('Situação Salva com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Houve um Erro ao tentar Salvar a Situação!', 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash('Houve um Erro ao tentar Salvar a Situação!', 'default', array('icon' => 'warning', 'title' => 'Atenção'));
 				$this->redirect(array('action' => 'index'));
 			}
 		}
@@ -88,10 +88,10 @@ class SituacaoController extends AppController
 
 			if ($this->Situacao->save($editSituacao)) {
 
-				$this->Session->setFlash('Situação Salva com Sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash('Situação Salva com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Houve um Erro ao tentar Salvar a Situação!', 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash('Houve um Erro ao tentar Salvar a Situação!', 'default', array('icon' => 'warning', 'title' => 'Atenção'));
 				$this->redirect(array('action' => 'index'));
 			}
 		}
@@ -107,7 +107,7 @@ class SituacaoController extends AppController
 		$inativarSituacao['sitdatasituacao'] = date('Y-m-d H:i:s');
 
 		if ($this->Situacao->save($inativarSituacao)) {
-			$this->Session->setFlash('Situação Excluida com Sucesso!', 'default', array('class' => 'alert alert-success'));
+			$this->Session->setFlash('Situação Excluida com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 		};
 
 		$this->redirect(array('controller' => 'Situacao', 'action' => 'index'));

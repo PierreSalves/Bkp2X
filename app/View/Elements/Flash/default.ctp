@@ -1,1 +1,8 @@
-<div id="<?php echo $key; ?>Message" class="<?php echo !empty($params['class']) ? $params['class'] : 'message'; ?>"><?php echo $message; ?></div>
+<script>
+	swal({
+		title: "<?php echo !empty($params['title']) ? $params['title'] : 'success'; ?>",
+		text: "<?php echo h($message) ?>",
+		icon: "<?php echo !empty($params['icon']) ? $params['icon'] : 'success'; ?>",
+		button: "OK",
+	});
+</script>

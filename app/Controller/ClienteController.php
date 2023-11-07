@@ -79,10 +79,11 @@ class ClienteController extends AppController
 
 				if ($this->RecorrenciaBackup->saveAll($insertRecorrencia)) {
 
-					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
+					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 					$this->redirect(array('action' => 'index'));
 				} else {
-					$this->Session->setFlash('Houve um Erro ao tentar Salvar o Cliente!', 'default', array('class' => 'alert alert-danger'));
+
+					$this->Session->setFlash('Houve um Erro ao tentar Salvar o Cliente!', 'default', array('icon' => 'warning', 'title' => 'Erro'));
 					$this->redirect(array('action' => 'index'));
 				}
 			}
@@ -206,7 +207,7 @@ class ClienteController extends AppController
 				if (!empty($editbackup)) {
 					$this->Backups->saveAll($editbackup);
 
-					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
+					$this->Session->setFlash('Cliente Salvo com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				}
 			}
 
@@ -259,7 +260,7 @@ class ClienteController extends AppController
 
 			if ($this->Backups->saveAll($inativarBackup)) {
 
-				$this->Session->setFlash('Cliente Excluido com Sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash('Cliente Excluido com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				$this->redirect(array('action' => 'index'));
 			}
 		}

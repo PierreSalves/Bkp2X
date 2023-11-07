@@ -31,7 +31,7 @@ class UsuarioController extends AppController
 				$this->Auth->login($requestUser['Usuario']);
 				return $this->redirect($this->Auth->redirect());
 			} else {
-				$this->Session->setFlash('Usuário ou Senha Incorretos', 'default', array('class' => 'alert alert-warning'));
+				$this->Session->setFlash('Usuário ou Senha Incorretos', 'default', array('icon' => 'warning', 'title' => 'Atenção'));
 			}
 		}
 	}
@@ -47,7 +47,7 @@ class UsuarioController extends AppController
 	function index()
 	{
 		if ($this->Session->read('Auth.User.useradm') != 'S') {
-			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->Session->setFlash('Você não tem permissão para realizar esta ação!', 'default', array('icon' => 'error', 'title' => 'Atenção'));
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
@@ -66,7 +66,7 @@ class UsuarioController extends AppController
 	function add()
 	{
 		if ($this->Session->read('Auth.User.useradm') != 'S') {
-			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->Session->setFlash('Você não tem permissão para realizar esta ação!', 'default', array('icon' => 'error', 'title' => 'Atenção'));
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
@@ -80,7 +80,7 @@ class UsuarioController extends AppController
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
 
 			if ($this->Usuario->save($this->request->data['Usuario'])) {
-				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				$this->redirect(array('action' => 'index'));
 			};
 		}
@@ -89,7 +89,7 @@ class UsuarioController extends AppController
 	function edit($usercodigo)
 	{
 		if ($this->Session->read('Auth.User.useradm') != 'S') {
-			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->Session->setFlash('Você não tem permissão para realizar esta ação!', 'default', array('icon' => 'error', 'title' => 'Atenção'));
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
@@ -104,7 +104,7 @@ class UsuarioController extends AppController
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
 
 			if ($this->Usuario->save($this->request->data['Usuario'])) {
-				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				$this->redirect(array('action' => 'index'));
 			};
 		}
@@ -113,7 +113,7 @@ class UsuarioController extends AppController
 	function view($usercodigo)
 	{
 		if ($this->Session->read('Auth.User.useradm') != 'S') {
-			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->Session->setFlash('Você não tem permissão para realizar esta ação!', 'default', array('icon' => 'error', 'title' => 'Atenção'));
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
@@ -125,7 +125,7 @@ class UsuarioController extends AppController
 	function delete($usercodigo)
 	{
 		if ($this->Session->read('Auth.User.useradm') != 'S') {
-			$this->Session->setFlash('<h3><b>Você não tem permissão para realizar esta ação!</b></h3>', 'default', array('class' => 'alert alert-danger'));
+			$this->Session->setFlash('Você não tem permissão para realizar esta ação!', 'default', array('icon' => 'error', 'title' => 'Atenção'));
 			$this->redirect(array('controller' => 'Backups', 'action' => 'index'));
 		};
 
@@ -137,7 +137,7 @@ class UsuarioController extends AppController
 		$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 
 		if ($this->Usuario->save($inativarUsuario)) {
-			$this->Session->setFlash('Usuário Excluido com Sucesso!', 'default', array('class' => 'alert alert-success'));
+			$this->Session->setFlash('Usuário Excluido com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 			$this->redirect(array('action' => 'index'));
 		};
 	}

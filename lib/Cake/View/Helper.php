@@ -550,13 +550,45 @@ class Helper extends CakeObject {
  * @param array $options Array of options
  * @return string onclick JS code
  */
+	// protected function _confirm($message, $okCode, $cancelCode = '', $options = array()) {
+	// 	$message = json_encode($message);
+
+	// 	$confirm = "if (confirm({$message})) { {$okCode} } {$cancelCode}";
+
+
+
+	// 	if (isset($options['escape']) && $options['escape'] === false) {
+	// 		$confirm = h($confirm);
+	// 	}
+	// 	return $confirm;
+	// }
+
 	protected function _confirm($message, $okCode, $cancelCode = '', $options = array()) {
 		$message = json_encode($message);
-		$confirm = "if (confirm({$message})) { {$okCode} } {$cancelCode}";
+
+		$script = "swal({
+				title: 'Confirmação',
+				text: {$message},
+				icon: 'warning',
+				dangerMode: true,
+				buttons: {
+					cancel: 'Cancelar',
+					confirm: 'Sim'
+				}
+			}).then((value) => {
+				if (value === true) {
+					{$okCode}
+				} else {
+					{$cancelCode}
+				}
+			})
+		";
+
 		if (isset($options['escape']) && $options['escape'] === false) {
-			$confirm = h($confirm);
+			$script = h($script);
 		}
-		return $confirm;
+
+		return $script;
 	}
 
 /**
