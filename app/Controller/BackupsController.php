@@ -191,8 +191,8 @@ class BackupsController extends AppController
 						}
 					}
 
-					// $this->Historico->saveAll($arrHistBackups);
-					// $this->RecorrenciaBackup->saveAll($attSituacaoBackup);
+					$this->Historico->saveAll($arrHistBackups);
+					$this->RecorrenciaBackup->saveAll($attSituacaoBackup);
 					unset($attSituacaoBackup);
 					unset($arrHistBackups);
 				}

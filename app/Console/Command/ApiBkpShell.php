@@ -6,21 +6,22 @@ App::uses('CakeTime', 'Utility');
 class ApiBkpShell extends AppShell
 {
 
-	public $tasks = array('ApiBkp'); // Carrega a task
+	public $tasks = array('ApiBkp');
 
 	public function main()
 	{
+		$count = 1;
 		while (true) {
 
-			$this->out('Verificando se a task deve ser executada...');
-			if (CakeTime::isWithinNext('10 minutes', 'now')) {
-				$this->out('Executando a task...');
-				$this->ApiBkp->execute();
-			} else {
-				$this->out('A task não deve ser executada neste momento.');
-			}
+			$this->out('IniciandoExecucao - Ação : ' . $count . ' - Data : ' . date('Y-m-d H:i:s'));
 
-			sleep(30);
+			$this->ApiBkp->execute();
+
+			$this->out('FimExecucao' . '- Data : ' . date('Y-m-d H:i:s'));
+			$this->out('||||||||||||||||||');
+
+			sleep(600);
+			$count++;
 		}
 	}
 }

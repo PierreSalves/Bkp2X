@@ -47,10 +47,6 @@ class Backups extends AppModel
 			'conditions' => array(
 				'recsituacao' => 'A'
 			)
-		),
-		// 'Historico' => array(
-		// 	'className' => 'Historico',
-		// 	'foreignKey' => 'hisbktcodigo'
-		// )
+		)
 	);
 }

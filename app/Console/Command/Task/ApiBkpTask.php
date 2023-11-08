@@ -3,7 +3,7 @@ App::uses('AppShell', 'Console/Command');
 App::uses('Shell', 'Console');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
-App::uses('AopModel', 'Model');
+App::uses('AppModel', 'Model');
 App::uses('Backups', 'Model');
 App::uses('Cliente', 'Model');
 App::uses('Historico', 'Model');
@@ -180,7 +180,6 @@ class ApiBkpTask extends Shell
 				unset($situacaoSucesso);
 				unset($situacaoFalha);
 				unset($clientes);
-				$this->out('executadoUsuario');
 			}
 		}
 	}
