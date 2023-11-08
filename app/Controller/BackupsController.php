@@ -90,8 +90,10 @@ class BackupsController extends AppController
 		$clientes = $this->Cliente->find(
 			'all',
 			array(
-				'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
-				'clnsituacao' => 'A'
+				'conditions' => array(
+					'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
+					'clnsituacao' => 'A'
+				)
 			)
 		);
 
@@ -189,8 +191,8 @@ class BackupsController extends AppController
 						}
 					}
 
-					$this->Historico->saveAll($arrHistBackups);
-					$this->RecorrenciaBackup->saveAll($attSituacaoBackup);
+					// $this->Historico->saveAll($arrHistBackups);
+					// $this->RecorrenciaBackup->saveAll($attSituacaoBackup);
 					unset($attSituacaoBackup);
 					unset($arrHistBackups);
 				}
