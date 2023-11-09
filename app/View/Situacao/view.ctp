@@ -4,7 +4,7 @@
 			<div class="modal-title">
 				<div class="row">
 					<div class="col-md-12">
-						<legend><?php echo __('Adicionando Situação') ?></legend>
+						<legend><?php echo __('Visualizando Situação') ?></legend>
 					</div>
 				</div>
 			</div>

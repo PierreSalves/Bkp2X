@@ -10,18 +10,16 @@ class ApiBkpShell extends AppShell
 
 	public function main()
 	{
-		$count = 1;
 		while (true) {
 
-			$this->out('IniciandoExecucao - Ação : ' . $count . ' - Data : ' . date('Y-m-d H:i:s'));
+			$this->out('IniciandoExecucao - Data : ' . date('Y-m-d H:i:s'));
 
 			$this->ApiBkp->execute();
 
-			$this->out('FimExecucao' . '- Data : ' . date('Y-m-d H:i:s'));
+			$this->out('FimExecucao - Data : ' . date('Y-m-d H:i:s'));
 			$this->out('||||||||||||||||||');
 
 			sleep(600);
-			$count++;
 		}
 	}
 }
