@@ -319,7 +319,7 @@
 					'action' => 'index'
 				],
 				[
-					'class' => 'btn btn-default',
+					'class' => 'btn btn-danger',
 					'escape' => false
 				]
 			) ?>

@@ -42,8 +42,13 @@ class BackupsController extends AppController
 				)
 			)
 		);
-		foreach ($arrSituacoes as $key => $situacao) {
-			$sitBackup[$situacao['Situacao']['sitcodigo']] = $situacao;
+
+		$sitBackup[0] = '';
+		if (!empty($arrSituacoes)) {
+
+			foreach ($arrSituacoes as $key => $situacao) {
+				$sitBackup[$situacao['Situacao']['sitcodigo']] = $situacao;
+			}
 		}
 		$this->set('sitBackup', $sitBackup);
 	}
@@ -85,107 +90,112 @@ class BackupsController extends AppController
 		$clientes = $this->Cliente->find(
 			'all',
 			array(
-				'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
-				'clnsituacao' => 'A'
+				'conditions' => array(
+					'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
+					'clnsituacao' => 'A'
+				)
 			)
 		);
 
-		foreach ($clientes as $key => $cliente) {
-			$findHistExistente = '';
+		if (!empty($clientes)) {
 
-			$dir = new Folder($cliente['Cliente']['clnbkpcaminho']);
+			foreach ($clientes as $key => $cliente) {
+				$findHistExistente = '';
 
-			foreach ($cliente['Backups'] as $key2 => $backup) {
+				$dir = new Folder($cliente['Cliente']['clnbkpcaminho']);
 
-				foreach ($backup['Recorrencia'] as $key3 => $recorrencia) {
+				foreach ($cliente['Backups'] as $key2 => $backup) {
 
-					if ($key3 < 1) {
+					foreach ($backup['Recorrencia'] as $key3 => $recorrencia) {
 
-						$findHistExistente = $recorrencia['reccodigo'];
-					} else {
+						if ($key3 < 1) {
 
-						$findHistExistente .= ',' . $recorrencia['reccodigo'];
+							$findHistExistente = $recorrencia['reccodigo'];
+						} else {
+
+							$findHistExistente .= ',' . $recorrencia['reccodigo'];
+						}
 					}
-				}
 
-				$arrHistExistente = $this->Historico->find(
-					'all',
-					array(
-						'fields' => array(
-							'Historico.*'
-						),
-						'conditions' => array(
-							'hisdata' => date('Y-m-d'),
-							'hisreccodigo IN (' . $findHistExistente . ')'
+					$arrHistExistente = $this->Historico->find(
+						'all',
+						array(
+							'fields' => array(
+								'Historico.*'
+							),
+							'conditions' => array(
+								'hisdata' => date('Y-m-d'),
+								'hisreccodigo IN (' . $findHistExistente . ')'
+							)
 						)
-					)
-				);
+					);
 
-				if (!empty($arrHistExistente)) {
-					foreach ($arrHistExistente as $keyHist => $historico) {
+					if (!empty($arrHistExistente)) {
+						foreach ($arrHistExistente as $keyHist => $historico) {
 
-						$numeroRecorrencia = $this->getRecorrencia($historico['Historico']['hisnomecompleto']);
-						$arrHistBackups[$numeroRecorrencia]['hiscodigo'] = $historico['Historico']['hiscodigo'];
+							$numeroRecorrencia = $this->getRecorrencia($historico['Historico']['hisnomecompleto']);
+							$arrHistBackups[$numeroRecorrencia]['hiscodigo'] = $historico['Historico']['hiscodigo'];
+						}
 					}
-				}
 
-				foreach ($backup['Recorrencia'] as $key4 => $recFalha) {
+					foreach ($backup['Recorrencia'] as $key4 => $recFalha) {
 
-					$attSituacaoBackup[$recFalha['recnumero']]['reccodigo'] = $recFalha['reccodigo'];
-					$attSituacaoBackup[$recFalha['recnumero']]['recsitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
+						$attSituacaoBackup[$recFalha['recnumero']]['reccodigo'] = $recFalha['reccodigo'];
+						$attSituacaoBackup[$recFalha['recnumero']]['recsitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
 
-					if (empty($arrHistBackups[$recFalha['recnumero']])) {
+						if (empty($arrHistBackups[$recFalha['recnumero']])) {
 
-						$arrHistBackups[$recFalha['recnumero']]['hisdata'] = date('Y-m-d');
-						$arrHistBackups[$recFalha['recnumero']]['hisdatacriacao'] = date('Y-m-d H:i:s');
-						$arrHistBackups[$recFalha['recnumero']]['hisnomecompleto'] = $backup['bktnomearquivo'] . '_' . date('Ymd') . '_' . $recFalha['recnumero'];
-						$arrHistBackups[$recFalha['recnumero']]['hissitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
-						$arrHistBackups[$recFalha['recnumero']]['hisreccodigo'] = $recFalha['reccodigo'];
-						$arrHistBackups[$recFalha['recnumero']]['hisbktcodigo'] = $backup['bktcodigo'];
+							$arrHistBackups[$recFalha['recnumero']]['hisdata'] = date('Y-m-d');
+							$arrHistBackups[$recFalha['recnumero']]['hisdatacriacao'] = date('Y-m-d H:i:s');
+							$arrHistBackups[$recFalha['recnumero']]['hisnomecompleto'] = $backup['bktnomearquivo'] . '_' . date('Ymd') . '_' . $recFalha['recnumero'];
+							$arrHistBackups[$recFalha['recnumero']]['hissitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
+							$arrHistBackups[$recFalha['recnumero']]['hisreccodigo'] = $recFalha['reccodigo'];
+							$arrHistBackups[$recFalha['recnumero']]['hisbktcodigo'] = $backup['bktcodigo'];
+						} else {
+
+							$arrHistBackups[$recFalha['recnumero']]['hissitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
+						}
+					}
+
+					if (empty($cliente['Cliente']['clnchavelogin'])) {
+
+						$arquivos = $dir->find($backup['bktnomearquivo'] . '_' . date('Ymd') . '.*_\d');
 					} else {
 
-						$arrHistBackups[$recFalha['recnumero']]['hissitcodigo'] = $situacaoFalha['Situacao']['sitcodigo'];
+						$diretorio = $dir->read(
+							$cliente['Cliente']['clnbkpcaminho'],
+							[
+								'username' => $cliente['Cliente']['clnchavelogin'],
+								'password' => $cliente['Cliente']['clnchavepwd']
+							]
+						);
+						$arquivos = $diretorio[1];
 					}
-				}
 
-				if (empty($cliente['Cliente']['clnchavelogin'])) {
+					if (!empty($arquivos)) {
 
-					$arquivos = $dir->find($backup['bktnomearquivo'] . '_' . date('Ymd') . '.*_\d');
-				} else {
+						foreach ($arquivos as $key5 => $bkp) {
 
-					$diretorio = $dir->read(
-						$cliente['Cliente']['clnbkpcaminho'],
-						[
-							'username' => $cliente['Cliente']['clnchavelogin'],
-							'password' => $cliente['Cliente']['clnchavepwd']
-						]
-					);
-					$arquivos = $diretorio[1];
-				}
+							$numeroRecorrencia = $this->getRecorrencia($bkp);
 
-				if (!empty($arquivos)) {
+							$arrHistBackups[$numeroRecorrencia]['hisnomecompleto'] = $bkp;
+							$arrHistBackups[$numeroRecorrencia]['hissitcodigo'] = $situacaoSucesso['Situacao']['sitcodigo'];
 
-					foreach ($arquivos as $key5 => $bkp) {
+							foreach ($backup['Recorrencia'] as $key6 => $rec) {
+								if ($numeroRecorrencia == $rec['recnumero']) {
 
-						$numeroRecorrencia = $this->getRecorrencia($bkp);
-
-						$arrHistBackups[$numeroRecorrencia]['hisnomecompleto'] = $bkp;
-						$arrHistBackups[$numeroRecorrencia]['hissitcodigo'] = $situacaoSucesso['Situacao']['sitcodigo'];
-
-						foreach ($backup['Recorrencia'] as $key6 => $rec) {
-							if ($numeroRecorrencia == $rec['recnumero']) {
-
-								$attSituacaoBackup[$numeroRecorrencia]['reccodigo'] = $rec['reccodigo'];
-								$attSituacaoBackup[$numeroRecorrencia]['recsitcodigo'] = $situacaoSucesso['Situacao']['sitcodigo'];
+									$attSituacaoBackup[$numeroRecorrencia]['reccodigo'] = $rec['reccodigo'];
+									$attSituacaoBackup[$numeroRecorrencia]['recsitcodigo'] = $situacaoSucesso['Situacao']['sitcodigo'];
+								}
 							}
 						}
 					}
-				}
 
-				$this->Historico->saveAll($arrHistBackups);
-				$this->RecorrenciaBackup->saveAll($attSituacaoBackup);
-				unset($attSituacaoBackup);
-				unset($arrHistBackups);
+					$this->Historico->saveAll($arrHistBackups);
+					$this->RecorrenciaBackup->saveAll($attSituacaoBackup);
+					unset($attSituacaoBackup);
+					unset($arrHistBackups);
+				}
 			}
 		}
 
