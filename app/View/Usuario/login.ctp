@@ -1,15 +1,8 @@
-<?php
-
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Bkp002 $bkp002
- */
-?>
 <div class="row" style="height: 20vh;">
     <div class="col-md-3 col-xs-1">
     </div>
     <div class="col-md-6 col-xs-10">
-        <?= $this->Flash->render('flash') ?>
+        <?php echo $this->Flash->render('flash') ?>
     </div>
     <div class="col-md-3 col-xs-1">
     </div>
@@ -19,11 +12,11 @@
         &nbsp;&nbsp;&nbsp;
     </div>
     <div class="col-md-4 col-xs- 10">
-        <?= $this->Form->create(
-            'Login',
+        <?php echo $this->Form->create(
+            'User',
             [
                 'url' => [
-                    'controller' => 'Bkp002',
+                    'controller' => 'Usuario',
                     'action' => 'login',
                 ],
                 'name' => 'Login',
@@ -33,7 +26,16 @@
         ) ?>
         <div class="panel-heading text-center azul-primary">
             <div class="panel-title">
-                <h1 class="text-white">Bkp Tracker</h1>
+                <div style="width: 100%;">
+                    <?php echo $this->Html->image(
+                        '/img/shield-dog-solid-white.png',
+                        array(
+                            'alt' => 'logo',
+                            'width' => '50'
+                        )
+                    ); ?>
+                    <h1 class="text-white null-margin">Bkp Tracker</h1>
+                </div>
             </div>
         </div>
 
@@ -41,8 +43,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <?php echo $this->Form->control(
-                        'username',
+                        'userlogin',
                         [
+                            'name' => 'userlogin',
                             'label' => false,
                             'type' => 'text',
                             'class' => 'form-control',
@@ -55,8 +58,9 @@
                 <div class="col-md-12">
                     <br>
                     <?php echo $this->Form->control(
-                        'password',
+                        'userpassword',
                         [
+                            'name' => 'userpassword',
                             'label' => false,
                             'type' => 'password',
                             'class' => 'form-control',
@@ -76,7 +80,7 @@
                         ]
                     );
                     ?>
-                    <?= $this->Form->end() ?>
+                    <?php echo $this->Form->end() ?>
                 </div>
             </div>
         </div>

@@ -19,26 +19,32 @@
 <html>
 
 <head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?= $this->fetch('meta') ?>
-    <title>
-        BkpTracker
-    </title>
+	<?= $this->Html->charset() ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?=
+	$this->Html->meta('icon');
+	$this->fetch('meta') ?>
+	<title>
+		BkpTracker
+	</title>
 
-    <?= $this->Html->script('jquery.min.js') ?>
-    <?= $this->Html->script('bootstrap.min.js') ?>
-    <?= $this->fetch('script') ?>
+	<?= $this->Html->script('jquery.min.js') ?>
+	<?= $this->Html->script('bootstrap.min.js') ?>
+	<?= $this->Html->script(
+		'/plugins/sweetalert/dist/sweetalert.min'
+	) ?>
+	<?= $this->fetch('script') ?>
 
-    <?= $this->Html->css('bootstrap.min.css', ['data-no-css-map' => true]) ?>
-    <?= $this->Html->css('custom.css') ?>
-    <?= $this->fetch('css') ?>
+	<?= $this->Html->css('bootstrap.min.css', ['data-no-css-map' => true]) ?>
+	<?= $this->Html->css('custom.css') ?>
+	<?= $this->fetch('css') ?>
 </head>
 
 <body>
-    <div class="container clearfix">
-        <?= $this->Flash->render() ?>
-        <?= $this->fetch('content') ?>
-    </div>
+	<div class="container clearfix">
+		<?= $this->Flash->render() ?>
+		<?= $this->fetch('content') ?>
+	</div>
 </body>
+
 </html>

@@ -244,7 +244,7 @@ class Folder {
  */
 	public function find($regexpPattern = '.*', $sort = false) {
 		list(, $files) = $this->read($sort);
-		return array_values(preg_grep('/^' . $regexpPattern . '$/i', $files));
+		return array_values(preg_grep('/^' . $regexpPattern . '/i', $files));
 	}
 
 /**
