@@ -16,16 +16,19 @@
 							]
 						) ?>
 						&nbsp;
-						<?php echo $this->Form->button(
-							__('<i class="glyphicon glyphicon-plus"></i> Adicionar Situação'),
-							[
-								'data-toggle' => 'modal',
-								'data-target' => '#modalSituacao',
-								'class' => 'btn btn-primary',
-								'escape' => false,
-								'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Situacao', 'action' => 'add']) . '\',\'#modalSituacao\')'
-							]
-						); ?>
+						<?php
+						// IMPLEMENTAÇÃO FUTURA
+						// echo $this->Form->button(
+						// 	__('<i class="glyphicon glyphicon-plus"></i> Adicionar Situação'),
+						// 	[
+						// 		'data-toggle' => 'modal',
+						// 		'data-target' => '#modalSituacao',
+						// 		'class' => 'btn btn-primary',
+						// 		'escape' => false,
+						// 		'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Situacao', 'action' => 'add']) . '\',\'#modalSituacao\')'
+						// 	]
+						// );
+						?>
 					</div>
 				</div>
 			</div>
@@ -75,21 +78,24 @@
 													'onclick' => 'openModal(\'' . $this->Html->url(['controller' => 'Situacao', 'action' => 'edit', $situacao['Situacao']['sitcodigo']]) . '\',\'#modalSituacao\')'
 												]
 											); ?>
-											<?php echo $this->Form->postLink(
-												__('<i class="glyphicon glyphicon-trash"></i>'),
-												[
-													'action' => 'delete',
-													$situacao['Situacao']['sitcodigo']
-												],
-												[
-													'class' => 'btn btn-xs btn-danger',
-													'escape' => false,
-													'confirm' => __(
-														'Tem certeza que deseja Excluir a Situação ' . $situacao['Situacao']['sitreduzido'] . '?',
+											<?php
+											// IMPLEMENTAÇÃO FUTURA
+											// echo $this->Form->postLink(
+											// 	__('<i class="glyphicon glyphicon-trash"></i>'),
+											// 	[
+											// 		'action' => 'delete',
+											// 		$situacao['Situacao']['sitcodigo']
+											// 	],
+											// 	[
+											// 		'class' => 'btn btn-xs btn-danger',
+											// 		'escape' => false,
+											// 		'confirm' => __(
+											// 			'Tem certeza que deseja Excluir a Situação ' . $situacao['Situacao']['sitreduzido'] . '?',
 
-													)
-												]
-											) ?>
+											// 		)
+											// 	]
+											// );
+											?>
 										</td>
 										<td class="text-center"><?php echo $situacao['Situacao']['sitcodigo']; ?></td>
 										<td><?php echo $situacao['Situacao']['sitreduzido']; ?></td>

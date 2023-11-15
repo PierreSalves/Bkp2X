@@ -37,7 +37,7 @@
 						'useremail',
 						[
 							'label' => 'Email',
-							'type' => 'text',
+							'type' => 'email',
 							'class' => 'form-control',
 							'required'
 						]

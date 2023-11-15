@@ -11,9 +11,12 @@
 					<?php foreach ($cliente['Backups'] as $key => $backup) : ?>
 						<?php foreach ($backup['Recorrencia'] as $key2 => $rec) : ?>
 							<div class="list-group-item" style="
-								background-color: <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorprimaria'] ?>;
+								background-color: <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorsecundaria'] ?>;
 								color: <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorfonte'] ?>;
-								border: 1px solid <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorprimaria'] ?>;
+								border-top: 1px solid <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorsecundaria'] ?>;
+								border-right: 1px solid <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorsecundaria'] ?>;
+								border-bottom: 1px solid <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorsecundaria'] ?>;
+								border-left: 4px solid <?php echo $sitBackup[$rec['recsitcodigo']]['Situacao']['sitcorprimaria'] ?>;
 								">
 								<?php echo $backup['bktnomearquivo'] . '_' . $rec['recnumero'] ?>
 							</div>

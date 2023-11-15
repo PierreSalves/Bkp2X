@@ -21,17 +21,54 @@ class BackupsController extends AppController
 	function index()
 	{
 
-		$this->Paginator->settings = array(
-			'limit' => 8,
-			'conditions' => array(
-				'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
-				'clnsituacao' => 'A'
-			),
-			'order' => array(
-				'clndescricaoreduzido' => 'ASC'
-			)
-		);
-		$this->set('bkp001', $this->Paginator->paginate('Cliente'));
+		// // IMPLEMENTAÇÃO FUTURA - COLOCAR CONSULTA E PAGINAÇÃO NA TELA PRINCIPAL
+		// if (isset($this->request->query['consulta'])) {
+		// 	$this->Paginator->settings = array(
+		// 		'conditions' => array(
+		// 			'limit' => $this->request->query['consulta']['limit'],
+		// 			$this->request->query['consulta']['campo'] => $this->request->query['consulta']['pesquisa'],
+		// 			'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
+		// 			'clnsituacao' => 'A'
+		// 		),
+		// 		'order' => array(
+		// 			$this->request->query['consulta']['campo'] => $this->request->query['consulta']['ordem'],
+		// 			// 'clndescricaoreduzido' => 'ASC'
+		// 			'clncodigo'
+		// 		)
+		// 	);
+		// 	$this->set('bkp001', $this->Paginator->paginate('Cliente'));
+		// }
+
+		if (!empty($this->request->query)) {
+			$bkp001 = $this->Cliente->find(
+				'all',
+				array(
+					'conditions' => array(
+						($this->request->query['campo'] . ' LIKE  \'%' . $this->request->query['pesquisa'] . '%\''),
+						'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
+						'clnsituacao' => 'A'
+					),
+					'order' => array(
+						$this->request->query['campo'],
+						'clncodigo'
+					)
+				)
+			);
+		} else {
+			$bkp001 = $this->Cliente->find(
+				'all',
+				array(
+					'conditions' => array(
+						'clnusercodigo' => $this->Session->read('Auth.User.usercodigo'),
+						'clnsituacao' => 'A'
+					),
+					'order' => array(
+						'clncodigo'
+					)
+				)
+			);
+		}
+		$this->set('bkp001', $bkp001);
 
 		$arrSituacoes = $this->Situacao->find(
 			'all',
