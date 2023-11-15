@@ -133,6 +133,66 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					</div>
 				</h1>
 
+				<h1 class="pull-left hidden-xs hidden-sm" style="margin: 0;padding: 5px 12px; max-width:50%;">
+					<?php echo $this->Form->create(
+						'consulta',
+						array(
+							'url' => array(
+								'controller' => 'Backups',
+								'action' => 'index'
+							),
+							'type' => 'get'
+						)
+					); ?>
+					<div class="input-group">
+						<span class="input-group-btn" style="min-width: 150px;">
+							<?php echo $this->Form->input(
+								'campo',
+								array(
+									'label' => false,
+									'type' => 'select',
+									'options' => array(
+										'clndescricaoreduzido' => 'Descrição Reduzida',
+										'clndescricao' => 'Descrição'
+									),
+									'value' => (isset($this->request->query['campo']) ? $this->request->query['campo'] : 'clndescricaoreduzido'),
+									'class' => 'form-control input-sm',
+									'style' => 'border-top-left-radius: 4px;
+												border-bottom-left-radius: 4px;
+											',
+									'div' => false,
+									'required'
+								)
+							); ?>
+						</span>
+						<?php echo $this->Form->input(
+							'pesquisa',
+							array(
+								'label' => false,
+								'type' => 'text',
+								'class' => 'form-control input-sm',
+								'div' => false,
+								'value' => (isset($this->request->query['pesquisa']) ? $this->request->query['pesquisa'] : ''),
+								'required'
+							)
+						); ?>
+						<span class="input-group-btn">
+							<?php echo $this->Form->button(
+								'<i class="glyphicon glyphicon-filter"></i> Filtrar',
+								array(
+									'type' => 'submit',
+									'div' => false,
+									'class' => 'btn btn-sm btn-info',
+									'style' => 'border-top-right-radius: 4px;
+												border-bottom-right-radius: 4px;
+											',
+								)
+							); ?>
+						</span>
+					</div>
+					<?php echo $this->Form->end(); ?>
+				</h1>
+
 				<h1 class="pull-right" style="margin: 0;padding: 5px 12px;">
 					<?php echo $this->Html->link(
 						'<i class="glyphicon glyphicon-cloud-download"></i>',

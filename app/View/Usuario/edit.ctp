@@ -46,7 +46,7 @@
 						'useremail',
 						[
 							'label' => 'Email',
-							'type' => 'text',
+							'type' => 'email',
 							'class' => 'form-control',
 							'value' => $usuario['Usuario']['useremail'],
 							'required'

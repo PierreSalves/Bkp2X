@@ -38,6 +38,8 @@ li {
 	width: -webkit-fill-available;
 	position: fixed;
 	top: 60px;
+	overflow-y: auto;
+	padding-right: 15px;
 }
 
 .sidebar ul {
@@ -140,4 +142,8 @@ textarea {
 
 .card-body {
 	min-height: 150px;
+}
+
+.list-group-item {
+	padding: 10px 15px 10px 6px;
 }
