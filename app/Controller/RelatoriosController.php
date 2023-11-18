@@ -79,7 +79,7 @@ class RelatoriosController extends AppController
 			$this->redirect(array('action' => 'resumoCliente'));
 		}
 
-		$dadosRelatorio = $this->Historico->resumoCliente($formatedDataInicio, $formatedDataFim, $cliente,$situacao,$ordem,$this->Session->read('Auth.User.usercodigo'));
+		$dadosRelatorio = $this->Historico->resumoCliente($formatedDataInicio, $formatedDataFim, $cliente, $situacao, $ordem, $this->Session->read('Auth.User.usercodigo'));
 
 		if (empty($dadosRelatorio)) {
 
@@ -160,7 +160,7 @@ class RelatoriosController extends AppController
 			$this->redirect(array('action' => 'resumoSituacao'));
 		}
 
-		$dadosRelatorio = $this->Historico->resumoSituacao($formatedDataInicio, $formatedDataFim, $cliente,$situacao,$ordem,$this->Session->read('Auth.User.usercodigo'));
+		$dadosRelatorio = $this->Historico->resumoSituacao($formatedDataInicio, $formatedDataFim, $cliente, $situacao, $ordem, $this->Session->read('Auth.User.usercodigo'));
 
 		if (empty($dadosRelatorio)) {
 
@@ -201,7 +201,6 @@ class RelatoriosController extends AppController
 		}
 
 		$this->set('optClientes', $optClientes);
-
 	}
 
 	function resumoDiarioImpressao()
@@ -224,12 +223,28 @@ class RelatoriosController extends AppController
 			$this->redirect(array('action' => 'resumoDiario'));
 		}
 
-		$dadosRelatorio = $this->Historico->resumoDiario($formatedDataInicio, $formatedDataFim, $cliente,$ordem,$this->Session->read('Auth.User.usercodigo'));
+		$dadosRelatorio = $this->Historico->resumoDiario($formatedDataInicio, $formatedDataFim, $cliente, $ordem, $this->Session->read('Auth.User.usercodigo'));
 
 		if (empty($dadosRelatorio)) {
 
 			$this->Session->setFlash('Atenção, não foi possível completar a solicitação, tente novamente mais tarde', 'default', array('class' => 'alert alert-warning'));
 			$this->redirect(array('action' => 'resumoDiario'));
+		}
+
+		$linhaAnterior['his'] = '';
+		$linhaAnterior['cln'] = '';
+		$rowspan = array();
+		foreach ($dadosRelatorio as $key => $linha) {
+
+			if ($linha['his'] != $linhaAnterior['his'] || $linha['cln'] != $linhaAnterior['cln']) {
+
+				$rowspan[$linha['cln']['clncodigo']] = 1;
+				$linhaAnterior['his'] = $linha['his'];
+				$linhaAnterior['cln'] = $linha['cln'];
+			} else {
+
+				$rowspan[$linha['cln']['clncodigo']]++;
+			}
 		}
 
 		$periodo['inicio'] =  $this->request->data['Filtros']['dataInicio'];
@@ -242,5 +257,6 @@ class RelatoriosController extends AppController
 		$this->set('periodo', $periodo);
 		$this->set('classLayout', $layout);
 		$this->set('dadosRelatorio', $dadosRelatorio);
+		$this->set('rowSpan', $rowspan);
 	}
 }
