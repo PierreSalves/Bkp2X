@@ -183,7 +183,8 @@ class Historico extends AppModel
 				bkt.bktrecorrencia,
 				rec.recnumero,
 				sit.sitreduzido,
-				sit.sitdescricao
+				sit.sitdescricao,
+				1
 			FROM bkp004 his
 				INNER JOIN bkp005 rec ON rec.reccodigo = his.hisreccodigo AND rec.recsituacao = 'A'
 				INNER JOIN bkp003 sit ON sit.sitcodigo = his.hissitcodigo AND sit.sitsituacao = 'A'

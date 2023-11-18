@@ -35,10 +35,10 @@
 			foreach ($dadosRelatorio as $key => $linha) : ?>
 				<?php if ($linha['his'] != $linhaAnterior['his'] || $linha['cln'] != $linhaAnterior['cln']) : ?>
 					<tr>
-						<td rowspan="<?php echo $linha['bkt']['bktrecorrencia']; ?>"><?php echo $linha['his']['hisdata'] ?></td>
-						<td class="text-center" rowspan="<?php echo $linha['bkt']['bktrecorrencia']; ?>"><?php echo $linha['cln']['clncodigo'] ?></td>
-						<td rowspan="<?php echo $linha['bkt']['bktrecorrencia']; ?>"><?php echo $linha['cln']['clndescricao'] ?></td>
-						<td rowspan="<?php echo $linha['bkt']['bktrecorrencia']; ?>"><?php echo $linha['cln']['clndescricaoreduzido'] ?></td>
+						<td rowspan="<?php echo $rowSpan[$linha['cln']['clncodigo']]; ?>"><?php echo $linha['his']['hisdata'] ?></td>
+						<td class="text-center" rowspan="<?php echo $rowSpan[$linha['cln']['clncodigo']]; ?>"><?php echo $linha['cln']['clncodigo'] ?></td>
+						<td rowspan="<?php echo $rowSpan[$linha['cln']['clncodigo']]; ?>"><?php echo $linha['cln']['clndescricao'] ?></td>
+						<td rowspan="<?php echo $rowSpan[$linha['cln']['clncodigo']]; ?>"><?php echo $linha['cln']['clndescricaoreduzido'] ?></td>
 					<?php
 					$linhaAnterior['his'] = $linha['his'];
 					$linhaAnterior['cln'] = $linha['cln'];
