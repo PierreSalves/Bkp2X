@@ -1,4 +1,4 @@
-<?xml version="0.0.05" encoding="utf-8"?>
+<?xml version="0.0.06" encoding="utf-8"?>
 <project name="CakePHP" default="build">
 	<!--
 	Build.xml file for CakePHP
