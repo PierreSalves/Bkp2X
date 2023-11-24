@@ -75,6 +75,12 @@ class UsuarioController extends AppController
 
 		if ($this->request->is('post')) {
 
+			if (!filter_var($this->request->data['Usuario']['useremail'], FILTER_VALIDATE_EMAIL)) {
+
+				$this->Session->setFlash('Email inválido', 'default', array('icon' => 'error', 'title' => 'Atenção'));
+				$this->redirect(array('action' => 'index'));
+			}
+
 			$this->request->data['Usuario']['usersituacao'] =  'A';
 			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
@@ -130,23 +136,34 @@ class UsuarioController extends AppController
 
 		$this->layout = 'ajax';
 
-		$this->set('usuario', $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo))));
+		$usuario = $this->Usuario->find('first', array('conditions' => array('usercodigo' => $usercodigo)));
+		$this->set('usuario', $usuario);
 
 		if ($this->request->is('post')) {
 
-			// $this->request->data['Usuario']['userpassword'] = Security::hash($this->request->data['Usuario']['userpassword'], 'blowfish');
+
+			if (!filter_var($this->request->data['Usuario']['useremail'], FILTER_VALIDATE_EMAIL)) {
+
+				$this->Session->setFlash('Email inválido', 'default', array('icon' => 'error', 'title' => 'Atenção'));
+				$this->redirect(array('action' => 'index'));
+			}
+
 			$this->request->data['Usuario']['userdatasituacao'] = date('Y-m-d H:i:s');
 			$this->request->data['Usuario']['userdatacriacao'] = date('Y-m-d H:i:s');
 
-			$existente = $this->Usuario->find(
-				'first',
-				array(
-					'conditions' => array(
-						'userlogin' => $this->request->data['Usuario']['userlogin'],
-						'usersituacao' => 'A'
+			$existente = null;
+			if ($this->request->data['Usuario']['userlogin'] != $usuario['Usuario']['userlogin']) {
+
+				$existente = $this->Usuario->find(
+					'first',
+					array(
+						'conditions' => array(
+							'userlogin' => $this->request->data['Usuario']['userlogin'],
+							'usersituacao' => 'A'
+						)
 					)
-				)
-			);
+				);
+			}
 
 			if (empty($existente)) {
 				$this->Usuario->save($this->request->data['Usuario']);
@@ -154,6 +171,9 @@ class UsuarioController extends AppController
 				$this->Session->setFlash('Usuário Salvo com Sucesso!', 'default', array('icon' => 'success', 'title' => 'Sucesso'));
 				$this->redirect(array('action' => 'index'));
 			};
+
+			$this->Session->setFlash('Login de usuário existente', 'default', array('icon' => 'warning', 'title' => 'Atenção'));
+			$this->redirect(array('action' => 'index'));
 		}
 	}
 

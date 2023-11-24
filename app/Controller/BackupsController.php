@@ -21,7 +21,7 @@ class BackupsController extends AppController
 	function index()
 	{
 
-		// // IMPLEMENTAÇÃO FUTURA - COLOCAR CONSULTA E PAGINAÇÃO NA TELA PRINCIPAL
+		// IMPLEMENTAÇÃO FUTURA - COLOCAR CONSULTA E PAGINAÇÃO NA TELA PRINCIPAL
 		// if (isset($this->request->query['consulta'])) {
 		// 	$this->Paginator->settings = array(
 		// 		'conditions' => array(
@@ -32,7 +32,6 @@ class BackupsController extends AppController
 		// 		),
 		// 		'order' => array(
 		// 			$this->request->query['consulta']['campo'] => $this->request->query['consulta']['ordem'],
-		// 			// 'clndescricaoreduzido' => 'ASC'
 		// 			'clncodigo'
 		// 		)
 		// 	);
